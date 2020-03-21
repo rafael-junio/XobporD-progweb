@@ -30,11 +30,6 @@ Linux e/ou macOS:
 <commando n>
 ```
 
-Windows (opcional):
-```
-<commandos>
-```
-
 ## Usando Nome_da_Aplicação
 
 Para usar Nome_da_Aplicação, siga os seguintes passos (exemplos):
@@ -52,7 +47,8 @@ Para usar Nome_da_Aplicação, siga os seguintes passos (exemplos):
 As seguintes pessoas contribuiram para este projeto:
 
 * [Rafael Junio Xavier](https://github.com/rafael-junio)
-* *.... (liste todos os membros da equipe)*
+* [Diego Bulhões Moraes](https://github.com/DiegoBulhoes/)
+
 
 ## Licença de uso
 
