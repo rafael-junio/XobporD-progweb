@@ -16,7 +16,7 @@ Antes de iniciar, certifique-se de cumprir os seguintes requisitos:
 #### Sistema Operacional
 * `Linux`.
 #### Você deve possuir as seguintes aplicações:
-* `NodeJs` (12.16.1 LTS)
+* `NodeJs` (>=12.16.1 LTS)
 * `Docker`
 * `Docker-compose`
 * `MongoDb`
