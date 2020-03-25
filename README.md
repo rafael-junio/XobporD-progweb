@@ -17,25 +17,25 @@ Antes de iniciar, certifique-se de cumprir os seguintes requisitos:
 * `Linux`.
 #### Você deve possuir as seguintes aplicações:
 * `NodeJs` (>=12.16.1 LTS)
-* `Docker`
-* `Docker-compose`
 * `MongoDb`
 
 ## Como executar
 
 Para fazer o deploy da aplicação siga os seguintes passos:
 
+Clone o repositório; 
 Linux:
 ```
-docker-compose build
-docker-compose up -d
+cd XobporD-progweb
+npm install
+npm start
 ```
 
 ## Usando XobporD
 
-Para usar Nome_da_Aplicação, siga os seguintes passos (exemplos):
+Para usar XobporD, siga os seguintes passos (exemplos):
 
-* Abra o navegador e digite o seguinte endereço: `http://localhost/....`
+* Abra o navegador e digite o seguinte endereço: `http://localhost:3000`
 * Ao abrir a aplicação você poderá:
   * Enviar arquivos de imagem ou vídeos, pré-visualiza-los no navegador e fazer download.
 
