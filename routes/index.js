@@ -15,4 +15,8 @@ router.get('/register', function (req, res, next) {
   res.render('register', { title: 'Express' })
 })
 
+router.get('/home', function (req, res, next) {
+  res.render('home', { title: 'Express' })
+})
+
 module.exports = router

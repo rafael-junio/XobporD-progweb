@@ -2,6 +2,25 @@ body {
   background-color: #303030;
 }
 
+nav {
+  width: auto;
+  background-color: #212121;
+}
+
+nav .brand-logo {
+  padding-left: 2rem;
+}
+
+nav .brand-logo.home {
+  padding-left: 5rem;
+}
+
+nav .brand-logo.right {
+  padding-top: 0.5rem;
+  display: inline-block;
+  max-width: 3.5rem;
+}
+
 .nav-wrapper {
   background-color: #212121;
 }
@@ -15,7 +34,7 @@ body {
   color: #fffafa;
 }
 
-.dot {
+.dot img{
   height: 190px;
   width: 190px;
   background-color: #212121;
@@ -32,8 +51,37 @@ body {
   max-width: 50%;
 }
 
+.btn {
+  margin: 10px;
+}
+
+.index {
+  background-color: #2e2d2d;
+  max-width: 50%;
+  max-height: 50%;
+  padding-bottom: 20px;
+  padding-top: 1px;
+  margin-top: 10rem;
+}
+
+@media only screen and (max-width: 370px) {
+  .index {
+    background-color: #2e2d2d;
+    max-width: 50%;
+    max-height: 50%;
+    padding-bottom: 20px;
+    padding-top: 1px;
+    margin-top: 3rem;
+  }
+}
+
+.top-logo {
+  left: 2rem;
+}
+
 .sidenav .user-view {
-  height: 200px;
+  height: 100%;
+  width: 100%;
 }
 
 .sidenav li a:hover {
@@ -52,6 +100,14 @@ body {
   color: #fffafa;
 }
 .register > h4 {
+  color: #fffafa;
+}
+
+.index-color > h4 {
+  color: #fffafa;
+}
+
+.index-color > h5 {
   color: #fffafa;
 }
 
