@@ -1,0 +1,31 @@
+
+  <% include ./head.ejs %>
+  <body>
+    <nav>
+      <div class="nav-wrapper">
+        <a href="/home" class="brand-logo right">XobproD</a>
+        <a
+          href="#"
+          data-target="slide-out"
+          class="show-on-large sidenav-trigger"
+          ><i class="material-icons">menu</i></a
+        >
+      </div>
+    </nav>
+
+    <ul id="slide-out" class="sidenav menu">
+      <li>
+        <div class="user-view">
+          <span class="dot"></span>
+          <li>
+            <a href="#name"><span class="white-text name">Name User</span></a>
+          </li>
+        </div>
+      </li>
+      <li><a href="/register">New user</a></li>
+      <li><a href="/uploads">Upload File</a></li>
+    </ul>
+
+    <%- include ./importScript.ejs%>
+  </body>
+</html>

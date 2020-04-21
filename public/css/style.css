@@ -1,0 +1,68 @@
+body {
+  background-color: #303030;
+}
+
+.nav-wrapper {
+  background-color: #212121;
+}
+
+.sidenav {
+  background-color: #2e2e2e;
+  width: 250px;
+}
+
+.sidenav li > a {
+  color: #fffafa;
+}
+
+.dot {
+  height: 190px;
+  width: 190px;
+  background-color: #212121;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.login {
+  background-color: #2e2d2d;
+  max-width: 50%;
+}
+.register {
+  background-color: #2e2d2d;
+  max-width: 50%;
+}
+
+.sidenav .user-view {
+  height: 200px;
+}
+
+.sidenav li a:hover {
+  background-color: #9e9e9e;
+}
+
+.login > h4 {
+  color: #fffafa;
+}
+
+.login > p {
+  color: #fffafa;
+}
+
+.login > p {
+  color: #fffafa;
+}
+.register > h4 {
+  color: #fffafa;
+}
+
+input {
+  color: #fffafa;
+}
+
+div.center-align {
+  color: #fffafa;
+}
+
+.material-icons {
+  color: #fffafa;
+}
