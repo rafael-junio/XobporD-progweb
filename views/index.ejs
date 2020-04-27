@@ -1,11 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
   <head>
-    <title><%= title %></title>
-    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <% include ./particles/head.ejs %>
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <nav>
+      <div class="nav-wrapper">
+        <a href="/" class="brand-logo left">XobproD</a>
+      </div>
+    </nav>
+    <section id="center-box" class="row z-depth-3 index">
+      <div class="row index-color">
+        <h4 class="center-align">Bem vindo ao XobproD</h4>
+      </div>
+      <div class="row index-color">
+        <h5 class="center-align">Faça aqui o upload de suas fotos e vídeos!</h5>
+      </div>
+      <div class="center-align">
+        <a href="/register">
+          <button class="waves-effect waves-light btn" 
+          type="button"> Cadastre-se </button>
+        </a>
+        <a href="/login">
+          <button class="waves-effect waves-light btn" 
+          type="button"> Login </button>
+        </a>
+      </div>
+    </section>
+    <%- include ./particles/importScript.ejs%>
   </body>
 </html>
