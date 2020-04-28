@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  nodejs:
+    build:
+        context: .
+        dockerfile: Dockerfile
+    image: nodejs
+    container_name: app-xobpord
+    restart: unless-stopped
+    environment:
+        NODE_ENV: development
+    ports:
+        - "3000:3000"
+    volumes:
+        - .:/usr/src/app
+        - /usr/src/app/node_modules
