@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon -e js,ejs,json,css --exec node ./bin/www",
     "lint": "eslint '**/*.js'",
-    "lint:fix": "eslint '**/*.js' --fix"
+    "lint:fix": "eslint '**/*.js'  --fix"
   },
   "repository": {
     "type": "git",

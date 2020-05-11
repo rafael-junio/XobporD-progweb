@@ -18,12 +18,11 @@ Antes de iniciar, certifique-se de cumprir os seguintes requisitos:
 
 #### Sistema Operacional
 
-- `Linux`
+- `Linux`.
 
 #### Você deve possuir as seguintes aplicações:
 
-- `docker`
-- `docker-compose`
+- `NodeJs` (>=12.16.1 LTS)
 - `MongoDb`
 
 ## Como executar
@@ -31,12 +30,12 @@ Antes de iniciar, certifique-se de cumprir os seguintes requisitos:
 Para fazer o deploy da aplicação siga os seguintes passos:
 
 Clone o repositório;
-Linux (Talvez seja necessário executar os comandos com privilégios `sudo`):
+Linux:
 
 ```
 cd XobporD-progweb
-docker-compose build
-docker-compose run -d
+npm install
+npm start
 ```
 
 ## Usando XobporD
