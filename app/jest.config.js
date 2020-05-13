@@ -1,0 +1,21 @@
+module.exports = {
+  bail: true,
+  clearMocks: true,
+  collectCoverageFrom: ['**/*.js', '*.js'],
+  coverageDirectory: 'coverage',
+  coveragePathIgnorePatterns: [
+    '/node_modules/',
+    '/__tests__/',
+    '/config/',
+    '/coverage/',
+    '/database/migrations/',
+    'jest.config.js',
+    'server.js',
+    'public',
+  ],
+  coverageReporters: ['lcov'],
+  notify: true,
+  notifyMode: 'failure-change',
+  testMatch: ['**/__tests__/unit/*.js', '**/__tests__/integration/*.js'],
+  testPathIgnorePatterns: ['/app/node_modules/', '/app/views', 'app/public/js'],
+};

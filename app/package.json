@@ -4,9 +4,13 @@
   "description": "Programa para Armazenamento de vídeos e fotos localmente com opção de acesso em Smartphone e outros computadores na rede.",
   "private": true,
   "scripts": {
-    "start": "nodemon -e js,ejs,json,css --exec node ./bin/www",
+    "start": "nodemon -e js,ejs,json,css --exec babel-node server.js",
     "lint": "eslint '**/*.js'",
-    "lint:fix": "eslint '**/*.js'  --fix"
+    "lint:fix": "eslint '**/*.js'  --fix",
+    "test": "NODE_ENV=test sequelize db:migrate && jest ",
+    "test:cover": "NODE_ENV=test sequelize db:migrate && jest --coverage",
+    "test:watch": "NODE_ENV=test sequelize db:migrate && jest --watch",
+    "posttest": "NODE_ENV=development sequelize db:migrate:undo:all"
   },
   "repository": {
     "type": "git",
@@ -19,17 +23,37 @@
   },
   "homepage": "https://github.com/rafael-junio/XobporD-progweb#readme",
   "dependencies": {
+    "bcrypt": "^4.0.1",
+    "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
+    "cookie-parser": "^1.4.5",
+    "dotenv": "^8.2.0",
     "ejs": "~2.6.1",
     "express": "~4.16.1",
-    "http-errors": "^1.7.3"
+    "http-errors": "^1.7.3",
+    "jsonwebtoken": "^8.5.1",
+    "mysql2": "^2.1.0",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "sequelize": "^5.21.8"
   },
   "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.6",
+    "@babel/node": "^7.8.7",
+    "@babel/plugin-transform-runtime": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
     "eslint": "^6.8.0",
-    "eslint-config-standard": "^14.1.1",
-    "eslint-plugin-import": "^2.20.1",
-    "eslint-plugin-node": "^11.0.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.1",
-    "nodemon": "^2.0.3"
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jest": "^23.11.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^2.5.0",
+    "jest": "^26.0.1",
+    "nodemon": "^2.0.3",
+    "sequelize-cli": "^5.5.1",
+    "sqlite3": "^4.2.0",
+    "supertest": "^4.0.2"
   }
 }

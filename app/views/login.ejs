@@ -11,8 +11,16 @@
     </nav>
 
     <section class="row z-depth-3 login">
+      <% include ./particles/message.ejs %>
       <h4 class="center-align">Login</h4>
-      <form method="post" action="/login" class="row">
+      <form
+        method="post"
+        action="/login"
+        method="POST"
+        autocomplete="off"
+        novalidate
+        class="row"
+      >
         <div class="row">
           <div class="input-field col s12">
             <i class="material-icons prefix">person</i>
@@ -42,12 +50,12 @@
         </div>
 
         <div class="center-align">
-          <a href="/home">
-            <button class="waves-effect waves-light btn" 
-            type="button"> Login </button>
-          </a>
+          <input
+            class="waves-effect waves-light btn"
+            type="submit"
+            value="Login"
+          />
         </div>
-
         <div class="center-align">
           <p>Não tem conta? <a href="/register">Registre-se</a></p>
         </div>

@@ -10,6 +10,10 @@ services:
     volumes:
       - ./app:/usr/app
       -  /usr/app/node_modules
+    environment: 
+      - NODE_ENV=development
+    env_file: 
+      - ./app/config/.env.local
     depends_on:
       - db
       - phpmyadmin
@@ -26,6 +30,7 @@ services:
     ports:
       - 3306:3306
     environment:
+      MYSQL_USER: root
       MYSQL_ROOT_PASSWORD: passwordRoot
     networks:
       network-proj-xobpord:

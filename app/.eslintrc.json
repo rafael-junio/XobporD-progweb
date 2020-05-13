@@ -1,15 +1,11 @@
 {
+  "extends": "airbnb",
+  "plugins": ["jest"],
   "env": {
+    "jest/globals": true,
     "browser": true,
-    "es6": true
-  },
-  "extends": ["standard"],
-  "globals": {
-    "Atomics": "readonly",
-    "SharedArrayBuffer": "readonly"
-  },
-  "parserOptions": {
-    "ecmaVersion": 2018
-  },
-  "rules": {}
+    "commonjs": true,
+    "es6": true,
+    "jquery": true
+  }
 }
