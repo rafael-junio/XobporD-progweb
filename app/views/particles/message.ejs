@@ -1,0 +1,7 @@
+<% if(typeof errors != 'undefined'){ %> <% errors.forEach(function(error) { %>
+<div class="card red lighten-5">
+  <div class="card-content red-text">
+    <%= error.msg %>
+  </div>
+</div>
+<% }); %> <% } %>

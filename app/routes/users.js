@@ -1,10 +1,14 @@
-var express = require('express')
+import { Router } from 'express';
+import passport from 'passport';
 
-var router = express.Router()
+const router = Router();
 
-/* GET users listing. */
-router.get('/', function (req, res, next) {
-  res.send('respond with a resource')
-})
+router.get(
+  '/home',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    res.render('home');
+  },
+);
 
-module.exports = router
+export default router;
