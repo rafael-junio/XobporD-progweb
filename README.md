@@ -23,6 +23,7 @@ Antes de iniciar, certifique-se de cumprir os seguintes requisitos:
 #### Você deve possuir as seguintes aplicações:
 
 - `Docker`
+- `Docker-compose`
 
 ## Como executar
 
