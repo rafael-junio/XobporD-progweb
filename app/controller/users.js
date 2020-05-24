@@ -1,6 +1,6 @@
-import User from '../database/models';
+import models from '../database/models';
 
 exports.register = async (userData) => {
-  const user = await User.User.create(userData).then((m) => m);
+  const user = await models.User.create(userData).then((m) => m);
   return user;
 };
