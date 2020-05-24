@@ -6,7 +6,6 @@ import compression from 'compression';
 import dotenv from 'dotenv';
 import passport from 'passport';
 import cookieParser from 'cookie-parser';
-
 import usersRouter from './routes/users';
 import indexRouter from './routes/index';
 
@@ -37,6 +36,7 @@ app.use(passport.session());
 app.use(compression());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
 
 // view engine setup
 

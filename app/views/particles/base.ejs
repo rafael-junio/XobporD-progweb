@@ -1,33 +1,73 @@
+<% include ./head.ejs %>
 
-  <% include ./head.ejs %>
-  <body>
-    <nav>
-      <div class="nav-wrapper">
-        <a href="/home" class="brand-logo left home">XobproD</a>
-        <a
-          href="#"
-          data-target="slide-out"
-          class="show-on-large sidenav-trigger"
-          ><i class="material-icons">menu</i>
-          </a>
-        <img src="https://i.imgur.com/W0oIDcS.png" class="brand-logo right">
-      </div>
-    </nav>
-    <ul id="slide-out" class="sidenav menu">
-      <li>
-        <div class="user-view">
-          <div class="dot">
-            <img src="https://i.imgur.com/W0oIDcS.png">
-          </div>
-          <li>
-            <a href="#name"><span class="white-text name">Name User</span></a>
-          </li>
+<body>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="/users/home" class="brand-logo left home">XobproD</a>
+      <a href="#" data-target="slide-out" class="show-on-large sidenav-trigger">
+        <i class="material-icons">menu</i>
+      </a>
+      <ul class="right hide-on-med-and-down">
+        <li><a nohref><i class="material-icons">search</i></a></li>
+        <li><a nohref><i class="material-icons">view_module</i></a></li>
+        <li><a nohref><i class="material-icons">refresh</i></a></li>
+        <li><a class="modal-trigger" href="#upload"><i class="material-icons">cloud_upload</i></a></li>
+        <li><a nohref><img class="imgnav" src="https://i.imgur.com/W0oIDcS.png"></a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <ul id="slide-out" class="sidenav menu">
+    <li>
+      <div class="user-view">
+        <div class="dot">
+          <img src="https://i.imgur.com/W0oIDcS.png">
         </div>
-      </li>
-      <li><a href="/register">New user</a></li>
-      <li><a href="/uploads">Upload File</a></li>
-    </ul>
+    <li>
+      <a href="#name"><span class="white-text name">Name User</span></a>
+    </li>
+    </div>
+    </li>
+    <li><a href="/register">New user</a></li>
+  </ul>
 
-    <%- include ./importScript.ejs%>
-  </body>
+  <div id="upload" class="modal">
+    <div class="modal-content">
+      <h4>Faça o upload dos seus arquivos aqui!</h4>
+      <p>
+      <form method="POST" action="/users/home" enctype="multipart/form-data">
+        <div class="file-field input-field">
+          <div class="btn">
+            <span>File</span>
+            <input type="file" name="file" multiple>
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text" placeholder="Envie um ou mais arquivos">
+          </div>
+          <input type="submit" class="btn btn-default" id="btnSubmit"></input>
+        </div>
+      </form>
+      </p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Fechar</a>
+    </div>
+  </div>
+
+  <% if(typeof message != 'undefined'){ %> <% message.forEach(function(message) { %>
+    <div class="row center">
+      <div class="col s12 m6">
+        <div class="card blue-grey darken-1">
+          <div class="card-content white-text">
+            <span class="card-title">Upload - Status</span>
+            <p><%= message.msg %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% }); %> <% } %>
+
+  <%- include ./importScript.ejs%>
+</body>
+
 </html>
