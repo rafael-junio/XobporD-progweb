@@ -22,8 +22,8 @@ Antes de iniciar, certifique-se de cumprir os seguintes requisitos:
 
 #### Você deve possuir as seguintes aplicações:
 
-- `NodeJs` (>=12.16.1 LTS)
-- `MongoDb`
+- `Docker`
+- `Docker-compose`
 
 ## Como executar
 
@@ -34,8 +34,8 @@ Linux:
 
 ```
 cd XobporD-progweb
-npm install
-npm start
+docker-compose build
+docker-compose up -d
 ```
 
 ## Usando XobporD
