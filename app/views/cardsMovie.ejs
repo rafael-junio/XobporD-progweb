@@ -1,0 +1,38 @@
+<div id="container" class="container">
+
+    <div class="row">
+
+        <% for(let i = 0; i < movies.results.length; i++) { %>
+            <div class="col m4">
+            <div class="card">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" src=<%= "https://image.tmdb.org/t/p/w500" + movies.results[i].poster_path %>>
+                </div>
+                <div class="card-content">
+                    <span
+                        class="card-title activator grey-text text-darken-4"><%= movies.results[i].title %><i
+                            class="material-icons right">more_vert</i></span>
+                    <p><%= movies.results[i].overview %></p>
+                </div>
+                <div class="card-reveal">
+                    <span
+                        class="card-title grey-text text-darken-4"><%= movies.results[i].title %><i
+                            class="material-icons right">close</i></span>
+                    <p><strong>Popularidade:</strong> <%= movies.results[i].popularity.toFixed(1) %></p>
+                    <p><strong>Adulto:</strong> <%= movies.results[i].adult ? "Sim" : "Não" %></p>
+                    <p><strong>Idioma Original:</strong> <%= movies.results[i].original_language %></p>
+                    <p><strong>Título Original:</strong> <%= movies.results[i].original_title %></p>
+                    <p><strong>Avaliação:</strong> <%= movies.results[i].vote_average %></p>
+                    <p><strong>Data de Lançamento:</strong> <%= new Date(movies.results[i].release_date).toLocaleDateString() %></p>
+                    <!-- <p>: <%= movies.results[i].vote_count %></p> -->
+                    <!-- <p>: <%= movies.results[i].video %></p> -->
+                    <!-- <p>: <%= movies.results[i].poster_path %></p> -->
+                    <!-- <p>: <%= movies.results[i].id %></p> -->
+                    <!-- <p>: <%= movies.results[i].overview %></p> -->
+                    <button class="waves-effect waves-light btn" type="button"> Play </button>
+                </div>
+            </div>
+        </div>
+        <% }%>
+        </div>
+    </div>
