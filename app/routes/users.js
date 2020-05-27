@@ -2,6 +2,8 @@ import { Router } from 'express';
 import passport from 'passport';
 import upload from '../middleware/multer.config'
 import uploadController from '../controller/upload'
+import jwt from 'jsonwebtoken';
+
 const router = Router();
 
 router.get(
@@ -14,11 +16,14 @@ router.get(
 
 
 router.post('/home', upload.single('file'), async (req, res) => {
-  const errors = [];
-  console.log(req.file);
-  var file = req.file
   const message = [];
-
+  
+  var file = req.file
+  const payload = jwt.verify(req.signedCookies['xobpord'], process.env.JWT_SECRET, {ignoreExpiration: true} );
+  
+  // console.log(req.signedCookies['xobpord']);
+  // console.log(payload);
+  
   if (!file) {
     console.log("No file received");
     
@@ -29,11 +34,11 @@ router.post('/home', upload.single('file'), async (req, res) => {
     console.log('file received');
     const fileData = {};
 
-    fileData.name = file.originalname;
+    fileData.fileName = file.originalname;
+    fileData.uploadName = file.filename;
     fileData.type = file.mimetype;
     fileData.size = file.size;
-    fileData.uploaded_by = 'rafael';
-    fileData.data = file.buffer;
+    fileData.uploaded_by = payload['sub'];
 
     uploadController.register(fileData);
 

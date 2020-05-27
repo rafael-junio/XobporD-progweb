@@ -8,7 +8,10 @@ export default (sequelize, DataTypes) => {
             type: DataTypes.INTEGER,
             notEmpty: true,
         },
-        name: {
+        fileName: {
+            type: DataTypes.STRING,
+        },
+        uploadName:{
             type: DataTypes.STRING,
         },
         type: {
@@ -19,9 +22,6 @@ export default (sequelize, DataTypes) => {
         },
         uploaded_by: {
             type: DataTypes.STRING,
-        },
-        data: {
-            type: DataTypes.BLOB("long"),
         }
     });
 

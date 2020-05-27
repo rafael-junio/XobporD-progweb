@@ -55,3 +55,4 @@ app/.yarn-integrity
 app/.env.prod
 
 app/__tests__/database.sqlite
+app/uploads
