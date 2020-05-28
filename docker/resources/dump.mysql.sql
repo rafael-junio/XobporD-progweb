@@ -52,11 +52,11 @@ COMMIT;
 DROP TABLE IF EXISTS `Files`;
 CREATE TABLE `Files` (
   `id` int NOT NULL,
-  `name` varchar(255) NOT NULL,
+  `fileName` varchar(255) NOT NULL,
+  `uploadName` varchar(255) NOT NULL,
   `type` varchar(100) NOT NULL,
   `size` int(11) NOT NULL,
   `uploaded_by` varchar(255) NOT NULL,
-  `data` longblob,
   `updated_at` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
