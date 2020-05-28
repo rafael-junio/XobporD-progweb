@@ -1,8 +1,7 @@
-const express = require('express')
-const router = express.Router()
-const fetch = require('node-fetch')
+import { Router } from 'express';
+import fetch from 'node-fetch';
 
-const baseUrl = 'https://api.themoviedb.org/3/'
+const router = Router();
 const APIKEY = 'e62f38436c5bc1ea1190c1515047e3f4'
 
 /**
