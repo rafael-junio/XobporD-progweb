@@ -1,20 +1,20 @@
 #!/bin/bash
 
 exec_migration(){
-    npm run migration
+    npm run migration --prefix /usr/app
 }
 
 start_app(){
-    npm run start
+    npm run start --prefix /usr/app
 }
 
 run(){
     # start with a try
     {   # open a subshell !!!
-        echo "Rodando migration"
+        echo "Exec migration"
         exec_migration
     }|| {
-        echo "Nova tentativa de rodar migration daqui 5 segundos"
+        echo "New attempt to run migration in 5 seconds"
         sleep 5s
         run
     }
