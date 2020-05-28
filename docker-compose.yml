@@ -10,6 +10,7 @@ services:
     volumes:
       - ./app:/usr/app
       -  /usr/app/node_modules
+      -  /usr/app/uploads
     environment: 
       - NODE_ENV=development
     env_file: 
