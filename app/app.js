@@ -10,8 +10,6 @@ import usersRouter from './routes/users';
 import indexRouter from './routes/index';
 import searchRouter from './routes/search';
 
-
-console.log(process.env.NODE_ENV);
 if (process.env.NODE_ENV === 'test') {
   dotenv.config({
     path: 'config/.env.test',
@@ -39,7 +37,6 @@ app.use(compression());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
 // view engine setup
 
 app.set('views', path.join(__dirname, 'views'));
@@ -51,19 +48,18 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/search', searchRouter)
+app.use('/search', searchRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
   next(createError(404));
 });
 
-// error handler
-// app.use((err, req, res) => {
-//   res.locals.message = err.message;
-//   res.locals.error = req.app.get('env') === 'development' ? err : {};
-//   res.status(err.status || 500);
-//   res.render('error');
-// });
+app.use((err, req, res) => {
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+  res.status(err.status || 500);
+  res.render('error');
+});
 
 module.exports = app;
