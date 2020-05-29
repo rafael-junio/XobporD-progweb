@@ -8,7 +8,7 @@ import passport from 'passport';
 import cookieParser from 'cookie-parser';
 import usersRouter from './routes/users';
 import indexRouter from './routes/index';
-import searchRouter from './routes/search';
+import mediaRouter from './routes/media';
 
 if (process.env.NODE_ENV === 'test') {
   dotenv.config({
@@ -48,7 +48,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/search', searchRouter);
+app.use('/media', mediaRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

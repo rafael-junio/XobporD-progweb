@@ -1,8 +1,8 @@
-import bcrypt from "bcrypt";
+import bcrypt from 'bcrypt';
 
 export default (sequelize, DataTypes) => {
   const User = sequelize.define(
-    "User",
+    'User',
     {
       id: {
         autoIncrement: true,
@@ -36,7 +36,7 @@ export default (sequelize, DataTypes) => {
           }
         },
       },
-    }
+    },
   );
   return User;
 };

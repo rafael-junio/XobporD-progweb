@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
   res.render('search', { title: 'Search' });
 });
 
-router.post('/media', (req, resp) => {
+router.post('/search', (req, resp) => {
   const { title, typeMedia, language } = req.body;
 
   if (typeMedia === 'movie') {
