@@ -3,25 +3,35 @@ export default (sequelize, DataTypes) => {
   const Files = sequelize.define('Files',
     {
       id: {
-        autoIncrement: true,
-        primaryKey: true,
         type: DataTypes.INTEGER,
-        notEmpty: true,
+        primaryKey: true,
+        autoIncrement: true,
+        allownNull: false,
       },
       fileName: {
         type: DataTypes.STRING,
+        allownNull: false,
       },
       uploadName: {
         type: DataTypes.STRING,
+        allownNull: false,
+        unique: true,
       },
       type: {
         type: DataTypes.STRING,
+        allownNull: false,
       },
       size: {
-        type: DataTypes.INTEGER,
-      },
-      uploaded_by: {
         type: DataTypes.STRING,
+        allownNull: false,
+      },
+      uploadedBy: {
+        type: DataTypes.STRING,
+        allownNull: false,
+      },
+      uploadAt: {
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW,
       },
     });
 
