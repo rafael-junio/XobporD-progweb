@@ -1,8 +1,8 @@
-import bcrypt from 'bcrypt';
+import bcrypt from "bcrypt";
 
 export default (sequelize, DataTypes) => {
   const User = sequelize.define(
-    'User',
+    "User",
     {
       id: {
         autoIncrement: true,
@@ -18,6 +18,14 @@ export default (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         notEmpty: true,
       },
+      createdAt: {
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW,
+      },
+      updatedAt: {
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW,
+      },
     },
     {
       hooks: {
@@ -28,7 +36,7 @@ export default (sequelize, DataTypes) => {
           }
         },
       },
-    },
+    }
   );
   return User;
 };
