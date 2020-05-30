@@ -8,5 +8,14 @@ exports.sendFile = async (res, idMedia) => {
   });
   const path = `${process.env.PATH_DIR_UPLOAD}/${filePath.dataValues.uploadName}`;
   const stream = fs.createReadStream(`/usr/app/${path}`);
+  stream.pipe(res);
+};
+
+exports.sendFileGz = async (res, idMedia) => {
+  const filePath = await models.Files.findOne({
+    where: { id: idMedia },
+  });
+  const path = `${process.env.PATH_DIR_UPLOAD}/${filePath.dataValues.uploadName}`;
+  const stream = fs.createReadStream(`/usr/app/${path}`);
   stream.pipe(zlib.createGzip()).pipe(res);
 };

@@ -16,7 +16,14 @@ router.get('/', (req, res) => {
   res.render('search', { title: 'Search' });
 });
 
-router.get('/download/:idFile', (req, res) => {
+router.get(
+  '/download/:idFile',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    mediaController.sendFileGz(res, req.params.idFile);
+  },
+);
+
   mediaController.sendFile(res, req.params.idFile);
 });
 
