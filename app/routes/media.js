@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import fetch from 'node-fetch';
+import mediaController from '../controller/media';
 
 const router = Router();
 
@@ -13,6 +14,10 @@ const APIKEY = 'e62f38436c5bc1ea1190c1515047e3f4';
 
 router.get('/', (req, res) => {
   res.render('search', { title: 'Search' });
+});
+
+router.get('/download/:idFile', (req, res) => {
+  mediaController.sendFile(res, req.params.idFile);
 });
 
 router.post('/search', (req, resp) => {
