@@ -1,5 +1,7 @@
 import { Router } from 'express';
 import fetch from 'node-fetch';
+import passport from 'passport';
+import mediaController from '../controller/media';
 
 const router = Router();
 
@@ -14,6 +16,30 @@ const APIKEY = 'e62f38436c5bc1ea1190c1515047e3f4';
 router.get('/', (req, res) => {
   res.render('search', { title: 'Search' });
 });
+
+router.get(
+  '/download/:idFile',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    mediaController.sendFileGz(res, req.params.idFile);
+  },
+);
+
+router.get(
+  '/play/:idFile',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    res.render('play', { idFile: req.params.idFile });
+  },
+);
+
+router.get(
+  '/stream/:idFile',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    mediaController.sendFile(res, req.params.idFile);
+  },
+);
 
 router.post('/search', (req, resp) => {
   const { title, typeMedia, language } = req.body;
