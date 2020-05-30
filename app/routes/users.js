@@ -35,7 +35,7 @@ router.post('/home', upload.single('file'), async (req, res) => {
     fileData.uploadName = file.filename;
     fileData.type = file.mimetype;
     fileData.size = file.size;
-    fileData.uploaded_by = payload.sub;
+    fileData.uploadedBy = payload.sub;
 
     uploadController.register(fileData);
 
