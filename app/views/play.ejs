@@ -7,7 +7,7 @@
     </head>
 
     <body>
-      <video
+      <!-- <video
         id="mediaVideo"
         class="video-js"
         data-setup='{
@@ -18,7 +18,10 @@
       >
         <source src="/media/stream/<%= idFile %>" type="video/mp4" />
       </video>
-      <script src="https://vjs.zencdn.net/7.8.2/video.js"></script>
+      <script src="https://vjs.zencdn.net/7.8.2/video.js"></script> -->
+      <video id="videoPlayer" controls autoplay> 
+        <source src="/media/stream/<%= idFile %>" type="video/mp4"> 
+      </video> 
     </body>
   </body>
 </html>

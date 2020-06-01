@@ -37,7 +37,8 @@ router.get(
   '/stream/:idFile',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
-    mediaController.sendFile(res, req.params.idFile);
+    // mediaController.sendFile(res, req.params.idFile);
+    mediaController.sendFileAl  (req, res);
   },
 );
 
@@ -50,7 +51,7 @@ router.post('/search', (req, resp) => {
     )
       .then((res) => res.json())
       .then((movies) => {
-        resp.render('searchMovie', { title: 'Movies', movies });
+        resp.render('cardsMovie', { title: 'Movies', movies });
       });
   } else if (typeMedia === 'tv') {
     fetch(
