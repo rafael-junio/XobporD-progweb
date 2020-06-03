@@ -37,7 +37,7 @@ nav .brand-logo.right {
 .imgnav {
   height: -webkit-fill-available;
 }
-.dot img{
+.dot img {
   height: 190px;
   width: 190px;
   background-color: #212121;
@@ -132,4 +132,12 @@ div.center-align {
   left: 100%;
   right: auto;
   align-content: center;
+}
+
+video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
 }

@@ -38,7 +38,7 @@ router.get(
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
     // mediaController.sendFile(res, req.params.idFile);
-    mediaController.sendFileAl  (req, res);
+    mediaController.sendFileAl(req, res);
   },
 );
 
