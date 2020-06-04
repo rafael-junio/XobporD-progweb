@@ -10,7 +10,10 @@ router.get(
   '/home',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
-    res.render('home');
+    uploadController.showAll().then(m => {
+      return res.render('home', { result: m });
+    })
+    // return res.render('home');
   },
 );
 
@@ -36,11 +39,14 @@ router.post('/home', upload.single('file'), async (req, res) => {
     fileData.type = file.mimetype;
     fileData.size = file.size;
     fileData.uploadedBy = payload.sub;
+    fileData.idTMDB = null;
+    fileData.tag = 'default';
 
     uploadController.register(fileData);
 
     message.push({ msg: 'Upload feito com sucesso' });
-    res.render('home', { message });
+    // res.render('home', { message });
+    res.redirect('home');
   }
 });
 export default router;

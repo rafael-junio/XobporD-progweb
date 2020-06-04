@@ -24,6 +24,14 @@ module.exports = {
       type: Sequelize.STRING,
       allownNull: false,
     },
+    idTMDB: {
+      type: Sequelize.INTEGER,
+      allownNull: true
+    },
+    tag: {
+      type: Sequelize.STRING,
+      allownNull: false
+    },
     uploadedBy: {
       type: Sequelize.STRING,
       allownNull: false,

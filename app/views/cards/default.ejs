@@ -1,0 +1,19 @@
+<div class="card-image waves-effect waves-block waves-light">
+    <img class="activator"
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Document_icon_%28the_Noun_Project_27904%29.svg/500px-Document_icon_%28the_Noun_Project_27904%29.svg.png">
+</div>
+<div class="card-content">
+    <span class="card-title activator grey-text text-darken-4"><%= file.id %><i
+            class=" material-icons right">more_vert</i></span>
+    <p><%= file.tag %></p>
+</div>
+<div class="card-reveal">
+    <span class="card-title grey-text text-darken-4"><%= file.fileName %><i
+            class="material-icons right">close</i></span>
+    <p><strong>Título:</strong> <%= file.fileName %></p>
+    <p><strong>Tipo:</strong> <%= file.type %></p>
+    <p><strong>Tamanho:</strong> <%= (file.size / 1000000.0).toFixed(2) %> MB</p>
+    <p><strong>Idioma Original:</strong> <%= file.type %></p>
+    <p><strong>Upload por:</strong> <%= file.uploadedBy %></p>
+    <a class="waves-effect waves-light btn" href=<%= "http://localhost:3000/media/stream/" + file.id %>>Exibir</a>
+</div>
