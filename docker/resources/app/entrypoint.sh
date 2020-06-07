@@ -4,6 +4,10 @@ exec_migration(){
     npm run migration --prefix /usr/app
 }
 
+seed(){
+    npx sequelize-cli db:seed:all
+}
+
 start_app(){
     npm run start --prefix /usr/app
 }
@@ -20,4 +24,4 @@ run(){
     }
 }
 
-run && start_app
+run && seed && start_app
