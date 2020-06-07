@@ -1,15 +1,9 @@
 import fs from 'fs-extra';
 import zlib from 'zlib';
 import models from '../database/models';
+import fetch from 'node-fetch';
 
-exports.sendFile = async (res, idMedia) => {
-  const filePath = await models.Files.findOne({
-    where: { id: idMedia },
-  });
-  const path = `${process.env.PATH_DIR_UPLOAD}/${filePath.dataValues.uploadName}`;
-  const stream = fs.createReadStream(`/usr/app/${path}`);
-  stream.pipe(res);
-};
+const baseUrl = 'https://api.themoviedb.org/3/';
 
 exports.sendFileGz = async (res, idMedia) => {
   const filePath = await models.Files.findOne({
@@ -20,11 +14,11 @@ exports.sendFileGz = async (res, idMedia) => {
   stream.pipe(zlib.createGzip()).pipe(res);
 };
 
-exports.sendFileAl = async (req, res) => {
+exports.sendFile = async (req, res) => {
   const filePath = await models.Files.findOne({
     where: { id: req.params.idFile },
   });
-  const path = `${process.env.PATH_DIR_UPLOAD}/${filePath.dataValues.uploadName}`;
+  const path = `${process.env.PATH_DIR_UPLOAD}/${filePath.uploadName}`;
   const stat = fs.statSync(path);
   const fileSize = stat.size;
   const { range } = req.headers;
@@ -51,3 +45,16 @@ exports.sendFileAl = async (req, res) => {
     fs.createReadStream(path).pipe(res);
   }
 };
+
+exports.search = (req, resp) => {
+  const { title, typeMedia, language } = req.body;
+
+  fetch(
+    `${baseUrl}search/${typeMedia}?api_key=${process.env.TMDB_API_KEY}&language=${language}&query=${title}`,
+  )
+    .then((res) => res.json())
+    .then((result) => {
+
+      resp.render(`cards/search/${typeMedia}`, { title: 'Search', result: result.results });
+    });
+}

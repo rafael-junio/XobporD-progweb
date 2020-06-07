@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <%- include('../../particles/base') %>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <% for(let i = 0; i < result.length; i++) { %>
+            <div class="col m4">
+                <div class="card">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img class="activator" src=<%= "https://image.tmdb.org/t/p/w500" + result[i].poster_path %>>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4"><%= result[i].name %> %><i
+                                class="material-icons right">more_vert</i></span>
+                        <p><%= result[i].overview %></p>
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4"><%= result[i].name %> %><i
+                                class="material-icons right">close</i></span>
+                        <p><strong>Popularidade:</strong> <%= result[i].popularity %></p>
+                        <p><strong>Avaliação:</strong> <%= result[i].vote_average %></p>
+                        <p><strong>Data do Primeiro Episódio:</strong>
+                            <%= new Date(result[i].first_air_date).toLocaleDateString() %></p>
+                        <p><strong>País de Origem:</strong> <%= result[i].origin_country %></p>
+                        <p><strong>Idioma Original:</strong> <%= result[i].original_language %></p>
+                        <p><strong>Título Original:</strong> <%= result[i].original_name %></p>
+                        <button class="waves-effect waves-light btn" type="button"> Escolher </button>
+                    </div>
+                </div>
+            </div>
+            <% }%>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<div class="card-image waves-effect waves-block waves-light">
+    <img class="activator" src=<%="https://image.tmdb.org/t/p/w500" + fileTMDB.poster_path %>>
+</div>
+<div class="card-content">
+    <span class="card-title activator grey-text text-darken-4"><%= fileTMDB.title %><i
+            class=" material-icons right">more_vert</i></span>
+    <p><a target="_blank" href=<%= "https://www.imdb.com/title/" + fileTMDB.imdb_id %>>IMDB</a></p>
+</div>
+<div class="card-reveal">
+    <span class="card-title grey-text text-darken-4"><%= fileTMDB.title %><i class="material-icons right">close</i></span>
+    <p><strong>Visão Geral:</strong> <%= fileTMDB.overview %></p>
+    <p><strong>Popularidade:</strong> <%= fileTMDB.popularity.toFixed(1) %></p>
+    <p><strong>Avaliação:</strong> <%= fileTMDB.vote_average %></p>
+    <p><strong>Adulto:</strong> <%= fileTMDB.adult ? "Sim" : "Não" %></p>
+    <p><strong>Título Original:</strong> <%= fileTMDB.original_title %></p>
+    <p><strong>Idioma Original:</strong> <%= fileTMDB.original_language %></p>
+    <p><strong>Gêneros:</strong>
+        <% for (let i = 0; i < fileTMDB.genres.length; i++) {%>
+        <%= fileTMDB.genres[i].name %>
+        <% }; %>
+    </p>
+    <p><strong>Data de Lançamento:</strong> <%= new Date(fileTMDB.release_date).toLocaleDateString() %></p>
+    <p><strong>Duração:</strong> <%= fileTMDB.runtime %> Minutos</p>
+    <p><strong>Tipo:</strong> <%= file.type %></p>
+    <p><strong>Tamanho:</strong> <%= (file.size / 1000000.0).toFixed(2) %> MB</p>
+    <p><strong>Upload por:</strong> <%= file.uploadedBy %></p>
+    <a class="waves-effect waves-light btn" href=<%= "http://localhost:3000/media/stream/" + idFile %>>Exibir</a>
+</div>

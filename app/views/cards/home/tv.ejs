@@ -1,0 +1,31 @@
+<div class="card-image waves-effect waves-block waves-light">
+    <img class="activator" src=<%= "https://image.tmdb.org/t/p/w500" + fileTMDB.poster_path %>>
+</div>
+<div class="card-content">
+    <span class="card-title activator grey-text text-darken-4"><%= fileTMDB.name %> %><i
+            class="material-icons right">more_vert</i></span>
+    <p><a target="_blank" href=<%= "https://www.imdb.com/title/" + fileTMDB.imdb_id %>>IMDB</a></p>
+</div>
+<div class="card-reveal">
+    <span class="card-title grey-text text-darken-4"><%= fileTMDB.name %> %><i class="material-icons right">close</i></span>
+    <p><strong>Visão Geral:</strong> <%= fileTMDB.overview %></p>
+    <p><strong>Popularidade:</strong> <%= fileTMDB.popularity %></p>
+    <p><strong>Avaliação:</strong> <%= fileTMDB.vote_average %></p>
+    <p><strong>Título Original:</strong> <%= fileTMDB.original_name %></p>
+    <p><strong>Idioma Original:</strong> <%= fileTMDB.original_language %></p>
+    <p><strong>País de Origem:</strong> <%= fileTMDB.origin_country %></p>
+    <p><strong>Em Produção:</strong> <%= fileTMDB.in_production ? "Sim" : "Não" %></p>
+    <p><strong>Temporadas:</strong> <%= fileTMDB.number_of_seasons %></p>
+    <p><strong>Episódios:</strong> <%= fileTMDB.number_of_episodes %></p>
+    <p><strong>Gêneros:</strong>
+        <% for (let i = 0; i < fileTMDB.genres.length; i++) {%>
+        <%= fileTMDB.genres[i].name %>
+        <% }; %>
+    </p>
+    <p><strong>Data do Primeiro Episódio:</strong> <%= new Date(fileTMDB.first_air_date).toLocaleDateString() %></p>
+    <p><strong>Status:</strong> <%= fileTMDB.status %></p>
+    <p><strong>Tipo:</strong> <%= file.type %></p>
+    <p><strong>Tamanho:</strong> <%= (file.size / 1000000.0).toFixed(2) %> MB</p>
+    <p><strong>Upload por:</strong> <%= file.uploadedBy %></p>
+    <a class="waves-effect waves-light btn" href=<%= "http://localhost:3000/media/stream/" + idFile %>>Exibir</a>
+</div>

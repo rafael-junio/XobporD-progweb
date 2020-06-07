@@ -6,18 +6,18 @@
 </head>
 
 <body>
-  <% if (result.files.length > 0) { %>
+  <% if (result !== null) { %>
   <div id="container" class="container">
     <div class="row">
       <% for(let i = 0; i < result.files.length; i++) { %>
-        <div class="col m3">
+        <div class="col m4">
         <div class="card">
           <% if (result.files[i].tag === 'movie') {  %>
-          <%- include('cards/movie', {file: result.files[i]}) %>
+          <%- include('cards/home/movie', {file: result.files[i], fileTMDB: result.TMDB[i], idFile: result.files[i].id}) %>
           <% } else if (result.files[i].tag === 'tv') { %>
-          <%- include('cards/tv', {file: result.files[i]}) %>
+          <%- include('cards/home/tv', {file: result.files[i], fileTMDB: result.TMDB[i], idFile: result.files[i].id}) %>
           <% } else { %>
-          <%- include('cards/default', {file: result.files[i]}) %>
+          <%- include('cards/home/default', {file: result.files[i]}) %>
           <% }; %>
         </div>
       </div>
