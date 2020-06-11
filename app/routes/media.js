@@ -6,6 +6,8 @@ import mediaController from '../controller/media';
 const router = Router();
 
 router.get('/search', (req, res) => {
+  console.log('twtwvuvuvuv');
+  
   res.render('search', { title: 'Search' });
 });
 
