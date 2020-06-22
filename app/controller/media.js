@@ -47,14 +47,13 @@ exports.sendFile = async (req, res) => {
 };
 
 exports.search = (req, resp) => {
-  const { title, typeMedia, language } = req.body;
+  const { titleMedia, typeMedia, language } = req.body;
 
   fetch(
-    `${baseUrl}search/${typeMedia}?api_key=${process.env.TMDB_API_KEY}&language=${language}&query=${title}`,
+    `${baseUrl}search/${typeMedia}?api_key=${process.env.TMDB_API_KEY}&language=${language}&query=${titleMedia}`,
   )
     .then((res) => res.json())
     .then((result) => {
-
-      resp.render(`cards/search/${typeMedia}`, { title: 'Search', result: result.results });
+      resp.render('upload', { title: 'Search', result: result.results, type: typeMedia });
     });
-}
+};

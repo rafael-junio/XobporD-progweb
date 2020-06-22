@@ -11,8 +11,8 @@
         <li><a nohref><i class="material-icons">search</i></a></li>
         <li><a nohref><i class="material-icons">view_module</i></a></li>
         <li><a nohref><i class="material-icons">refresh</i></a></li>
-        <li><a class="modal-trigger" href="#upload"><i class="material-icons">cloud_upload</i></a></li>
-        <li><a nohref><img class="imgnav" src="https://i.imgur.com/W0oIDcS.png"></a></li>
+        <li><a class="modal-trigger" href="/users/upload"><i class="material-icons">cloud_upload</i></a></li>
+        <li><img class="imgnav" src="https://i.imgur.com/W0oIDcS.png"></li>
       </ul>
     </div>
   </nav>
@@ -27,8 +27,6 @@
       <a href="#name"><span class="white-text name">Name User</span></a>
     <li><a href="/register">New user</a></li>
   </ul>
-
-  <% include ./upload.ejs %>
 
   <% if(typeof message != 'undefined'){ %> <% message.forEach(function(message) { %>
   <div class="row center">
@@ -47,6 +45,7 @@
   <script>
     $(document).ready(function () {
       $("select").formSelect();
+      $('input#input_text, textarea#textarea2').characterCounter();
     });
   </script>
 </body>

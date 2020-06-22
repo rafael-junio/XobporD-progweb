@@ -1,15 +1,8 @@
 import { Router } from 'express';
-import fetch from 'node-fetch';
 import passport from 'passport';
 import mediaController from '../controller/media';
 
 const router = Router();
-
-router.get('/search', (req, res) => {
-  console.log('twtwvuvuvuv');
-  
-  res.render('search', { title: 'Search' });
-});
 
 router.get(
   '/download/:idFile',
@@ -35,7 +28,7 @@ router.get(
   });
 
 router.post(
-  '/search',
+  '/upload/search',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
     mediaController.search(req, res);

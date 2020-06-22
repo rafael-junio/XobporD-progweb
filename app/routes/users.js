@@ -16,7 +16,19 @@ router.get(
   },
 );
 
-router.post('/home', upload.single('file'), async (req, res) => {
+router.get(
+  '/upload',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    let result;
+    return res.render('upload', {result});
+  },
+);
+
+router.post(
+  '/home',
+  upload.single('file'),
+  async (req, res) => {
   const message = [];
 
   const { file } = req;
@@ -38,8 +50,8 @@ router.post('/home', upload.single('file'), async (req, res) => {
     fileData.type = file.mimetype;
     fileData.size = file.size;
     fileData.uploadedBy = payload.sub;
-    fileData.idTMDB = null;
-    fileData.tag = 'default';
+    fileData.idTMDB = req.body.idTMDB;
+    fileData.tag = req.body.typeMedia;
 
     uploadController.register(fileData);
 
