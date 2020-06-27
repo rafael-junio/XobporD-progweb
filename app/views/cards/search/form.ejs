@@ -1,0 +1,23 @@
+<div id="form_media_container" class="container">
+    <form id="form_upload" method="POST" action="/users/upload" enctype="multipart/form-data">
+      <div class="row">
+        <div class="file-field input-field col s6">
+          <div class="btn">
+            <i class="material-icons left">insert_drive_file</i>
+            <span>Arquivo</span>
+            <input id="fileMedia" name="file" type="file" required <%= multiple %> >
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text" placeholder="<%- file_msg %>">
+          </div>
+        </div>
+        <input id="idTMDB" name="idTMDB" type="hidden">
+        <input id="typeMedia" name="typeMedia" type="hidden" value=<%= media %>>
+        <div class="center-align">
+          <button id="btn_submit" type="submit" class="btn waves-effect waves-light">Upload
+            <i class="material-icons right">file_upload</i>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>

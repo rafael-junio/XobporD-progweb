@@ -24,5 +24,9 @@
     <p><strong>Tipo:</strong> <%= file.type %></p>
     <p><strong>Tamanho:</strong> <%= (file.size / 1000000.0).toFixed(2) %> MB</p>
     <p><strong>Upload por:</strong> <%= file.uploadedBy %></p>
-    <a class="waves-effect waves-light btn" href=<%= "http://localhost:3000/media/stream/" + idFile %>>Exibir</a>
+    
+    <div class="row">
+        <a class="waves-effect waves-light btn" href=<%= "http://localhost:3000/media/stream/" + file.id %>>Exibir</a>
+        <a class="waves-effect waves-light btn" href=<%= "http://localhost:3000/media/download/" + file.id %>>Download</a>
+    </div>
 </div>

@@ -1,31 +1,9 @@
-<div id="main_container" class="container">
-  <form id="form_upload" method="POST" action="/users/home" enctype="multipart/form-data">
-    <div class="row">
-      <div class="file-field input-field col s6">
-        <div class="btn">
-          <i class="material-icons left">insert_drive_file</i>
-          <span>Arquivo</span>
-          <input id="fileMedia" name="file" type="file" multiple="">
-        </div>
-        <div class="file-path-wrapper">
-          <input class="file-path validate" type="text" placeholder="Envie um ou mais arquivos">
-        </div>
-      </div>
-      <input id="idTMDB" name="idTMDB" type="hidden">
-      <input id="typeMedia" name="typeMedia" type="hidden" value="tv">
-      <div class="center-align">
-        <button id="btn_submit" type="submit" class="btn waves-effect waves-light">Upload
-          <i class="material-icons right">file_upload</i>
-        </button>
-      </div>
-    </div>
-  </form>
-</div>
+<%- include('form', { media: "tv", file_msg: "Envie um ou mais arquivos", multiple: "multiple" }) %>
 
 <div id="media_container" class="container">
   <div class="row">
     <% for(let i = 0; i < result.length; i++) { %>
-    <div class="col m4">
+    <div class="col m3">
       <div class="card">
         <div class="card-image waves-effect waves-block waves-light">
           <img class="activator" src=<%= "https://image.tmdb.org/t/p/w500" + result[i].poster_path %>>
@@ -46,7 +24,7 @@
           <p><strong>Idioma Original:</strong> <%= result[i].original_language %></p>
           <p><strong>Título Original:</strong> <%= result[i].original_name %></p>
           <button class="waves-effect waves-light btn" type="button"
-            onclick=<%="chooseMedia(" + result[i].id + ")" %>>Escolher</button>
+            onclick=<%="chooseMedia(" + result[i].id + ")" %>>Selecionar</button>
         </div>
       </div>
     </div>

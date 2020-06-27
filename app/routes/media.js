@@ -27,6 +27,13 @@ router.get(
     mediaController.sendFile(req, res);
   });
 
+router.get(
+  '/delete/:idFile',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    mediaController.deleteFile(req, res);
+  });
+
 router.post(
   '/upload/search',
   passport.authenticate('jwt', { session: false }),

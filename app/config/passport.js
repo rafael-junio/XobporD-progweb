@@ -21,18 +21,13 @@ passport.use(
       passReqToCallback: true,
     },
     async (req, payload, done) => {
-      try {
-        const userResult = await models.User.findOne({
-          where: { email: payload.sub },
-        });
-        if (!userResult) {
-          return done(null, false);
-        }
-        req.user = userResult;
-        return done(null, userResult);
-      } catch (error) {
-        return done(error, false);
-      }
-    },
-  ),
-);
+      models.User.findOne({ where: { email: payload.sub }, })
+        .then(userResult => {
+          if (!userResult) {
+            return done(null, false);
+          }
+          req.user = userResult;
+          return done(null, userResult);
+        })
+        .catch(error => { return done(error, false) });
+    }));
