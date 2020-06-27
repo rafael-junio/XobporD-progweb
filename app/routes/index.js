@@ -45,8 +45,8 @@ router.post('/register', async (req, res) => {
     userData.password = req.body.password;
 
     userController.register(userData);
-    errors.push({ msg: 'Cadastro feito com sucesso!' });
-    res.render('login', { errors, formContent });
+    const successe = 'Successful registration!';
+    res.render('login', { successe, formContent });
   }
 });
 
