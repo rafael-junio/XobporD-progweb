@@ -1,0 +1,32 @@
+<%- include('form', { media: 'movie', file_msg: 'Envie apenas um arquivo', multiple: undefined }) %>
+
+<div id="media_container" class="container">
+  <div class="row">
+    <% for(let i = 0; i < result.length; i++) { %>
+    <div class="col m3">
+      <div class="card">
+        <div class="card-image waves-effect waves-block waves-light">
+          <img class="activator" src=<%="https://image.tmdb.org/t/p/w500" + result[i].poster_path %>>
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4"><%= result[i].title %><i
+              class="material-icons right">more_vert</i></span>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4"><%= result[i].title %><i
+              class="material-icons right">close</i></span>
+          <p><strong>Popularidade:</strong> <%=result[i].popularity.toFixed(1) %></p>
+          <p><strong>Adulto:</strong> <%= result[i].adult ? "Sim" : "Não"%></p>
+          <p><strong>Idioma Original:</strong> <%=result[i].original_language %></p>
+          <p><strong>Título Original:</strong> <%=result[i].original_title %></p>
+          <p><strong>Sinópse:</strong> <%= result[i].overview %></p>
+          <p><strong>Avaliação:</strong> <%= result[i].vote_average %></p>
+          <p><strong>Data de Lançamento:</strong> <%= new Date(result[i].release_date).toLocaleDateString() %></p>
+          <button class="waves-effect waves-light btn" type="button"
+            onclick=<%="chooseMedia(" + result[i].id + ")" %>>Selecionar</button>
+        </div>
+      </div>
+    </div>
+    <% }%>
+  </div>
+</div>

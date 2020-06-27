@@ -37,7 +37,7 @@ nav .brand-logo.right {
 .imgnav {
   height: -webkit-fill-available;
 }
-.dot img{
+.dot img {
   height: 190px;
   width: 190px;
   background-color: #212121;
@@ -49,6 +49,7 @@ nav .brand-logo.right {
   background-color: #2e2d2d;
   max-width: 50%;
 }
+
 .register {
   background-color: #2e2d2d;
   max-width: 50%;
@@ -132,4 +133,24 @@ div.center-align {
   left: 100%;
   right: auto;
   align-content: center;
+}
+
+video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+#stepActions {
+  background-color: #212121;
+}
+
+.modal-content {
+  background-color: #212121;
+}
+
+.step-title {
+  color: #fffafa;
 }

@@ -25,6 +25,14 @@ export default (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allownNull: false,
       },
+      idTMDB: {
+        type: DataTypes.INTEGER,
+        allownNull: true
+      },
+      tag: {
+        type: DataTypes.STRING,
+        allownNull: false
+      },
       uploadedBy: {
         type: DataTypes.STRING,
         allownNull: false,

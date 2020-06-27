@@ -24,7 +24,8 @@ exports.signIn = async (req, res, next) => {
       );
       next();
     } else {
-      next();
+      const errors = [{ msg: 'Email/password does not match' }];
+      res.render('login', { errors });
     }
   });
 };

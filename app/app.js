@@ -52,7 +52,8 @@ app.use('/media', mediaRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
-  next(createError(404));
+  // next(createError(404));
+  res.status(404).send('Unable to find the requested resource!');
 });
 
 app.use((err, req, res) => {
