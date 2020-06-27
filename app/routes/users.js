@@ -10,9 +10,7 @@ router.get(
   '/home',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
-    uploadController.showAll().then(result => {
-      return res.render('home', { result });
-    })
+    uploadController.showAll().then((result) => res.render('home', { result }));
   },
 );
 

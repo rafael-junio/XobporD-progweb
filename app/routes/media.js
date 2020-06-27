@@ -25,7 +25,8 @@ router.get(
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
     mediaController.sendFile(req, res);
-  });
+  },
+);
 
 router.get(
   '/delete/:idFile',
@@ -39,6 +40,7 @@ router.post(
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
     mediaController.search(req, res);
-  });
+  },
+);
 
 export default router;

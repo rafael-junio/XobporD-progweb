@@ -1,7 +1,7 @@
 import fs from 'fs-extra';
 import zlib from 'zlib';
-import models from '../database/models';
 import fetch from 'node-fetch';
+import models from '../database/models';
 
 const baseUrl = 'https://api.themoviedb.org/3/';
 const pattRegex = /.*\//;
@@ -109,3 +109,15 @@ exports.deleteFile = (req, res) => {
     .then(() => res.redirect('/users/home'))
     .catch(err => { return console.log(err) })
 }
+
+exports.search = (req, resp) => {
+  const { titleMedia, typeMedia, language } = req.body;
+
+  fetch(
+    `${baseUrl}search/${typeMedia}?api_key=${process.env.TMDB_API_KEY}&language=${language}&query=${titleMedia}`,
+  )
+    .then((res) => res.json())
+    .then((result) => {
+      resp.render('upload', { title: 'Search', result: result.results, type: typeMedia });
+    });
+};
