@@ -16,7 +16,7 @@
         <div class="row">
           <div class="input-field col s12">
             <i class="material-icons prefix">person</i>
-            <input id="email" name="email" type="email" class="validate" />
+            <input id="email" name="email" type="email" class="validate" value="<%= typeof formContent != 'undefined'  && formContent.email != 'undefined' ? formContent.email : '' %>"/>
             <label for="email">Email</label>
           </div>
         </div>
