@@ -37,7 +37,7 @@ router.get(
   (req, res) => {
     userController.findUser(req.params.idUser).then((m) => {
       const formContent = { email: m.email };
-      res.render("register", { formContent });
+      res.render("update", { formContent });
     });
   }
 );

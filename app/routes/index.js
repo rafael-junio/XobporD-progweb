@@ -44,6 +44,7 @@ router.get("/logout", authMiddleware.signOut, (req, res) => {
 
 router.post("/register", async (req, res) => {
   const errors = [];
+  const formContent = { email: req.body.email };
   if (userController.isValidFormRegister(req.body)) {
     const userData = {};
     userData.email = req.body.email;
@@ -53,7 +54,22 @@ router.post("/register", async (req, res) => {
     res.render("login", { successe });
   } else {
     errors.push({ msg: "Error registering" });
-    res.render("register", { errors });
+    res.render("register", { errors, formContent });
+  }
+});
+
+router.post("/update", async (req, res) => {
+  const errors = [];
+  if (userController.isValidFormRegister(req.body)) {
+    const userData = {};
+    userData.email = req.body.email;
+    userData.password = req.body.password;
+    userController.update(userData);
+    const successe = "Successful update!";
+    res.render("login", { successe });
+  } else {
+    errors.push({ msg: "Error update" });
+    res.render("update", { errors, formContent });
   }
 });
 
