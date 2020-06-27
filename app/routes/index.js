@@ -31,22 +31,16 @@ router.get('/logout', authMiddleware.signOut, (req, res) => {
 router.post('/register', async (req, res) => {
   const errors = [];
   const formContent = { name: req.body.name, email: req.body.email };
-  if (
-    req.body.password !== req.body.confirm_password
-    || req.body.email !== req.body.confirm_email
-    || req.body.email === ''
-    || req.body.password === ''
-  ) {
-    errors.push({ msg: 'Email/password does not match' });
-    res.render('register', { errors, formContent });
-  } else {
+  if (userController.isValidFormRegister(req.body)) {
     const userData = {};
     userData.email = req.body.email;
     userData.password = req.body.password;
-
     userController.register(userData);
     const successe = 'Successful registration!';
     res.render('login', { successe, formContent });
+  } else {
+    errors.push({ msg: 'Error registering' });
+    res.render('register', { errors, formContent });
   }
 });
 
