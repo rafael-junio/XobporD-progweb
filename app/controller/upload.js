@@ -24,17 +24,15 @@ exports.register = (req, res, payload) => {
     tag: req.body.typeMedia,
   };
 
-  console.log(fileData)
+  console.log(fileData);
 
   models.Files.create(fileData)
     .then((data) => {
-      console.log(data)
+      console.log(data);
       message.push({ msg: 'Upload feito com sucesso' });
       return res.render('upload', { message, result: undefined });
     })
-    .catch(err => {
-      return console.err(err);
-    })
+    .catch((err) => console.err(err));
 };
 
 exports.showAll = async () => {
@@ -47,7 +45,7 @@ exports.showAll = async () => {
       result.TMDB = {};
     });
 
-  if (result.files.length === 0) { return null };
+  if (result.files.length === 0) { return null; }
 
   for (let i = 0; i < result.files.length; i++) {
     if (result.files[i].tag === 'movie' || result.files[i].tag === 'tv') {
@@ -58,9 +56,7 @@ exports.showAll = async () => {
        */
       result.TMDB[i] = await fetch(`${baseUrl}${result.files[i].tag}/${result.files[i].idTMDB}?api_key=${process.env.TMDB_API_KEY}&language=pt-BR`)
         .then((res) => res.json())
-        .then((data) => {
-          return data;
-        });
+        .then((data) => data);
     }
   }
   return result;

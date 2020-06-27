@@ -33,7 +33,8 @@ router.get(
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
     mediaController.deleteFile(req, res);
-  });
+  },
+);
 
 router.post(
   '/upload/search',

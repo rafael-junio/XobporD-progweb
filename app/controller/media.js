@@ -8,28 +8,23 @@ const pattRegex = /.*\//;
 
 exports.sendFileGz = async (res, idMedia) => {
   await models.Files.findOne({ where: { id: idMedia } })
-    .then(filePath => {
+    .then((filePath) => {
       const path = `${process.env.PATH_DIR_UPLOAD}/${filePath.dataValues.uploadName}`;
       const stream = fs.createReadStream(`/usr/app/${path}`);
       stream.pipe(zlib.createGzip()).pipe(res);
     })
-    .catch(err => {
-      return console.err(err);
-    });
+    .catch((err) => console.err(err));
 };
 
 exports.sendFile = (req, res) => {
-  models.Files.findOne({ where: { id: req.params.idFile }, })
-    .then(file => {
+  models.Files.findOne({ where: { id: req.params.idFile } })
+    .then((file) => {
       const mime = file.type;
       const mimeShort = mime.match(pattRegex)[0].slice(0, -1);
       const path = `${process.env.PATH_DIR_UPLOAD}/${file.uploadName}`;
-      if (mimeShort === 'video') { return sendFileVideo(req, res, path); }
-      else if (mimeShort === 'image') { return res.sendFile(`/usr/app/${path}`); }
-      else if (mimeShort === 'audio') { return sendFileAudio(req, res, `/usr/app/${path}`, mime); }
-      else { return res.redirect('/users/home'); }
-    })
-}
+      if (mimeShort === 'video') { return sendFileVideo(req, res, path); } if (mimeShort === 'image') { return res.sendFile(`/usr/app/${path}`); } if (mimeShort === 'audio') { return sendFileAudio(req, res, `/usr/app/${path}`, mime); } return res.redirect('/users/home');
+    });
+};
 
 exports.search = (req, resp) => {
   const { titleMedia, typeMedia, language } = req.body;
@@ -41,36 +36,35 @@ exports.search = (req, resp) => {
     .then((result) => {
       resp.render('upload', { title: 'Search', result: result.results, type: typeMedia });
     })
-    .catch(err => {
-      return console.err(err)
-    });
+    .catch((err) => console.err(err));
 };
 
 async function sendFileAudio(req, res, filePath, mime) {
   const stat = fs.statSync(filePath);
   const total = stat.size;
   if (req.headers.range) {
-    const range = req.headers.range;
-    const parts = range.replace(/bytes=/, "").split("-");
+    const { range } = req.headers;
+    const parts = range.replace(/bytes=/, '').split('-');
     const partialstart = parts[0];
     const partialend = parts[1];
 
     const start = parseInt(partialstart, 10);
     const end = partialend ? parseInt(partialend, 10) : total - 1;
     const chunksize = (end - start) + 1;
-    const readStream = fs.createReadStream(filePath, { start: start, end: end });
+    const readStream = fs.createReadStream(filePath, { start, end });
     res.writeHead(206, {
-      'Content-Range': 'bytes ' + start + '-' + end + '/' + total,
-      'Accept-Ranges': 'bytes', 'Content-Length': chunksize,
-      'Content-Type': 'audio/ogg'
+      'Content-Range': `bytes ${start}-${end}/${total}`,
+      'Accept-Ranges': 'bytes',
+      'Content-Length': chunksize,
+      'Content-Type': 'audio/ogg',
     });
     readStream.pipe(res);
   } else {
     res.writeHead(200, {
       'Content-Type': 'audio/ogg',
-      'Content-Length': stat.size
+      'Content-Length': stat.size,
     });
-      const stream = fs.createReadStream(filePath, { highWaterMark: 10 });
+    const stream = fs.createReadStream(filePath, { highWaterMark: 10 });
     stream.pipe(res);
   }
 }
@@ -101,14 +95,14 @@ async function sendFileVideo(req, res, filePath) {
     res.writeHead(200, head);
     fs.createReadStream(filePath).pipe(res);
   }
-};
+}
 
 exports.deleteFile = (req, res) => {
-  models.Files.findOne({ where: { id: req.params.idFile }, })
+  models.Files.findOne({ where: { id: req.params.idFile } })
     .then((file) => file.destroy())
     .then(() => res.redirect('/users/home'))
-    .catch(err => { return console.log(err) })
-}
+    .catch((err) => console.log(err));
+};
 
 exports.search = (req, resp) => {
   const { titleMedia, typeMedia, language } = req.body;

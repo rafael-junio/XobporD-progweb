@@ -17,16 +17,14 @@ router.get(
 router.get(
   '/upload',
   passport.authenticate('jwt', { session: false }),
-  (req, res) => {
-    return res.render('upload', { result: undefined });
-  },
+  (req, res) => res.render('upload', { result: undefined }),
 );
 
 router.post(
   '/upload',
   passport.authenticate('jwt', { session: false }),
   upload.single('file'),
-  async(req, res) => {
+  async (req, res) => {
     const payload = await jwt.verify(
       req.signedCookies.xobpord,
       process.env.JWT_SECRET,
@@ -34,6 +32,7 @@ router.post(
     );
 
     uploadController.register(req, res, payload);
-  });
+  },
+);
 
 export default router;
