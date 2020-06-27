@@ -1,2 +1,2 @@
-public/js/materialize*.js
-public/js/init.js
+public/js/**/*.js
+database/**/*.js

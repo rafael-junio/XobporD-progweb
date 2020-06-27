@@ -10,37 +10,30 @@ router.get(
   '/home',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
-    res.render('home');
+    uploadController.showAll().then((result) => res.render('home', { result }));
   },
 );
 
-router.post('/home', upload.single('file'), async (req, res) => {
-  const message = [];
+router.get(
+  '/upload',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    return res.render('upload', { result: undefined });
+  },
+);
 
-  const { file } = req;
-  const payload = jwt.verify(
-    req.signedCookies.xobpord,
-    process.env.JWT_SECRET,
-    { ignoreExpiration: true },
-  );
+router.post(
+  '/upload',
+  passport.authenticate('jwt', { session: false }),
+  upload.single('file'),
+  async(req, res) => {
+    const payload = await jwt.verify(
+      req.signedCookies.xobpord,
+      process.env.JWT_SECRET,
+      { ignoreExpiration: true },
+    );
 
-  if (!file) {
-    message.push({ msg: 'Campo do arquivo vazio!' });
-    res.render('home', { message });
-  } else {
-    console.log('file received');
-    const fileData = {};
+    uploadController.register(req, res, payload);
+  });
 
-    fileData.fileName = file.originalname;
-    fileData.uploadName = file.filename;
-    fileData.type = file.mimetype;
-    fileData.size = file.size;
-    fileData.uploadedBy = payload.sub;
-
-    uploadController.register(fileData);
-
-    message.push({ msg: 'Upload feito com sucesso' });
-    res.render('home', { message });
-  }
-});
 export default router;
