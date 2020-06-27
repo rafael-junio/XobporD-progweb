@@ -30,12 +30,20 @@ Antes de iniciar, certifique-se de cumprir os seguintes requisitos:
 Para fazer o deploy da aplicação siga os seguintes passos:
 
 Clone o repositório;
-Linux:
 
-```
+- Linux:
+
+```shell
 cd XobporD-progweb
 docker-compose build
 docker-compose up -d
+```
+
+usuario e password do usuario _admin_:
+
+```shell
+email: admin@admin.com
+password: admin
 ```
 
 ## Usando XobporD
