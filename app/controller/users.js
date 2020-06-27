@@ -5,6 +5,16 @@ exports.register = async (userData) => {
   return user;
 };
 
+exports.delete = async (userId) => models.User.destroy({
+  where: {
+    id: userId,
+  },
+});
+
+exports.list = () => models.User.findAll({
+  attributes: ['email', 'id'],
+});
+
 exports.isValidFormRegister = async (userData) => {
   const haveContent = userData.email !== '' || userData.password !== '';
   const isValidPassword = userData.password.length >= 8;

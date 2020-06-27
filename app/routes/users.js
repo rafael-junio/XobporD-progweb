@@ -3,6 +3,7 @@ import passport from 'passport';
 import jwt from 'jsonwebtoken';
 import upload from '../middleware/multer.config';
 import uploadController from '../controller/upload';
+import usersController from '../controller/users';
 
 const router = Router();
 
@@ -18,6 +19,24 @@ router.get(
   '/upload',
   passport.authenticate('jwt', { session: false }),
   (req, res) => res.render('upload', { result: undefined }),
+);
+
+router.get(
+  '/delete/:idUser',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    usersController.delete(req.params.idUser).then(() => {
+      res.redirect('/users');
+    });
+  },
+);
+
+router.get(
+  '/delete',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    res.render('upload', { result: undefined });
+  },
 );
 
 router.post(

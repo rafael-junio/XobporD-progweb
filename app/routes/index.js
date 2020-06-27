@@ -20,6 +20,20 @@ router.get('/register', (req, res) => {
   res.render('register');
 });
 
+router.get('/users', (req, res) => {
+  const users = [];
+  userController.list().then((user) => {
+    user.forEach((u) => {
+      const user = {
+        email: u.email,
+        id: u.id,
+      };
+      users.push(user);
+    });
+    res.render('users', { users });
+  });
+});
+
 router.post('/login', authMiddleware.signIn, (req, res) => {
   res.redirect('/users/home');
 });
