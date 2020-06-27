@@ -10,9 +10,7 @@ router.get(
   '/home',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
-    uploadController.showAll().then(result => {
-      return res.render('home', { result });
-    })
+    uploadController.showAll().then((result) => res.render('home', { result }));
   },
 );
 
@@ -21,14 +19,11 @@ router.get(
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
     let result;
-    return res.render('upload', {result});
+    return res.render('upload', { result });
   },
 );
 
-router.post(
-  '/home',
-  upload.single('file'),
-  async (req, res) => {
+router.post('/home', upload.single('file'), async (req, res) => {
   const message = [];
 
   const { file } = req;
@@ -56,9 +51,7 @@ router.post(
     uploadController.register(fileData);
 
     message.push({ msg: 'Upload feito com sucesso' });
-    uploadController.showAll().then(result => {
-      return res.render('home', { message, result });
-    })
+    uploadController.showAll().then((result) => res.render('home', { message, result }));
   }
 });
 export default router;

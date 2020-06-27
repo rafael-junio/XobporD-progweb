@@ -5,7 +5,7 @@ module.exports = {
     [
       {
         email: 'admin@admin.com',
-        password: '$2b$15$gSyG.gjQc2iRVZXmoS5g0u9x7CEmfmIZLxKnvkvWGYSswzO8Co4am',
+        password: '$2b$15$VUgqmppwPQpMdtvVCjzCr.OuWZHvhEakkyXNNG/cyAMRtKYVvBR2y',
       },
     ],
     {},

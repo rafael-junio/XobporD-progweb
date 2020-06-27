@@ -1,7 +1,7 @@
 import fs from 'fs-extra';
 import zlib from 'zlib';
-import models from '../database/models';
 import fetch from 'node-fetch';
+import models from '../database/models';
 
 const baseUrl = 'https://api.themoviedb.org/3/';
 
