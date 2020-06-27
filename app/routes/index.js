@@ -24,7 +24,7 @@ router.post('/login', authMiddleware.signIn, (req, res) => {
   res.redirect('/users/home');
 });
 
-router.post('/logout', authMiddleware.signOut, (req, res) => {
+router.get('/logout', authMiddleware.signOut, (req, res) => {
   res.redirect('/login');
 });
 
