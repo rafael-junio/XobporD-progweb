@@ -5,21 +5,37 @@ import userController from '../controller/users';
 
 const router = Router();
 
-router.get('/',
-passport.authenticate('jwt', { session: false, successRedirect: '/users/home', failureRedirect: '/index' }))
+router.get(
+  '/',
+  passport.authenticate('jwt', {
+    session: false,
+    successRedirect: '/users/home',
+    failureRedirect: '/index',
+  }),
+);
 
-router.get('/index',
-(req, res) => {
+router.get('/index', (req, res) => {
   res.render('index');
 });
 
-router.get('/register',
+router.get(
+  '/register',
   passport.authenticate('jwt', { session: false, failureRedirect: '/login' }),
   (req, res) => {
     res.render('register');
-  });
+  },
+);
 
-router.get('/users',
+router.get('/login', (req, res) => {
+  res.render('login');
+});
+
+router.get('/logout', authMiddleware.signOut, (req, res) => {
+  res.redirect('/login');
+});
+
+router.get(
+  '/users',
   passport.authenticate('jwt', { session: false, failureRedirect: '/login' }),
   (req, res) => {
     const users = [];
@@ -33,33 +49,43 @@ router.get('/users',
       });
       res.render('users', { users });
     });
-  });
+  },
+);
 
 router.post('/login', authMiddleware.signIn, (req, res) => {
   res.redirect('/users/home');
 });
 
-router.get('/logout', authMiddleware.signOut, (req, res) => {
-  res.redirect('/login');
-});
+router.get(
+  '/logout',
+  passport.authenticate('jwt', { session: false, failureRedirect: '/login' }),
+  (req, res) => {
+    res.redirect('/login');
+  },
+);
 
-router.post('/register', authMiddleware.signIn, (req, res) => {
-  const errors = [];
-  const formContent = { email: req.body.email };
-  if (userController.isValidFormRegister(req.body)) {
-    const userData = {};
-    userData.email = req.body.email;
-    userData.password = req.body.password;
-    userController.register(userData);
-    const successe = 'Successful registration!';
-    res.render('login', { successe });
-  } else {
-    errors.push({ msg: 'Error registering' });
-    res.render('register', { errors, formContent });
-  }
-});
+router.post(
+  '/register',
+  passport.authenticate('jwt', { session: false, failureRedirect: '/login' }),
+  (req, res) => {
+    const errors = [];
+    const formContent = { email: req.body.email };
+    if (userController.isValidFormRegister(req.body)) {
+      const userData = {};
+      userData.email = req.body.email;
+      userData.password = req.body.password;
+      userController.register(userData);
+      const successe = 'Successful registration!';
+      res.render('login', { successe });
+    } else {
+      errors.push({ msg: 'Error registering' });
+      res.render('register', { errors, formContent });
+    }
+  },
+);
 
-router.post('/update',
+router.post(
+  '/update',
   passport.authenticate('jwt', { session: false, failureRedirect: '/login' }),
   (req, res) => {
     const errors = [];
@@ -74,6 +100,7 @@ router.post('/update',
       errors.push({ msg: 'Error update' });
       res.render('update', { errors, formContent });
     }
-  });
+  },
+);
 
 export default router;
