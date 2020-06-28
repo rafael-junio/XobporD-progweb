@@ -1,47 +1,33 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-  <head>
-    <% include ./particles/head.ejs %>
-  </head>
-  <body>
-    <nav>
-      <div class="nav-wrapper">
-        <a href="/" class="brand-logo left">XobproD</a>
-      </div>
-    </nav>
-    <section class="row z-depth-3 register">
-      <% include ./particles/message.ejs %>
-      <h4 class="center-align">Users</h4>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Email</th>
-            <th>Id</th>
-            <th>Edit</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% if(typeof users != 'undefined'){ %> <% users.forEach(function(user)
-          { %>
-          <tr>
-            <td><%= user.id %></td>
-            <td><%= user.email %></td>
-            <td>
-              <a href="/users/edit/<%= user.id %>"
-                ><i class="material-icons">edit</i></a
-              >
-            </td>
-            <td>
-              <a href="/users/delete/<%= user.id %>"
-                ><i class="material-icons">delete</i></a
-              >
-            </td>
-          </tr>
-          <% }); %> <% } %>
-        </tbody>
-      </table>
-    </section>
-    <%- include ./particles/importScript.ejs%>
-  </body>
-</html>
+<%- include('particles/base') %>
+
+<section class="row z-depth-3 register">
+  <% include ./particles/message.ejs %>
+  <h4 class="center-align">Users</h4>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Email</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if(typeof users != 'undefined'){ %> <% users.forEach(function(user)
+            { %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.email %></td>
+        <td>
+          <a href="/users/edit/<%= user.id %>"><i class="material-icons">edit</i></a>
+        </td>
+        <td>
+          <a href="/users/delete/<%= user.id %>"><i class="material-icons">delete</i></a>
+        </td>
+      </tr>
+      <% }); %> <% } %>
+    </tbody>
+  </table>
+</section>
+
+<%- include('particles/footer') %>

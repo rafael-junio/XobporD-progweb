@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-  <% include ./particles/base.ejs %>
-</head>
-
-<body>
-  <br>
+  <%- include('particles/base') %>
+  
   <% if (result) { %>
   <div id="container" class="container">
     <div class="row">
@@ -26,6 +19,5 @@
     </div>
   </div>
   <% }; %>
-</body>
 
-</html>
+  <%- include('particles/footer') %>

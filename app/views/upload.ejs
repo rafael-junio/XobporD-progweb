@@ -1,31 +1,24 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<%- include('particles/base') %>
 
-<head>
-    <% include ./particles/base.ejs %>
-</head>
-
-<body>
-    <div class="container">
-        <div class="row">
-            <div class="input-field s12 m6 offset-m3 l4 offset-l4">
-                <i class="material-icons prefix">movie</i>
-                <select id="typeMedia" name="typeMedia" onchange="changeTypeMedia()">
-                    <option value="" disabled selected>Tipo de Mídia</option>
-                    <option value="movie">Filme</option>
-                    <option value="tv">Série</option>
-                    <option value="default">Arquivo</option>
-                </select>
-            </div>
+<div class="container">
+    <div class="row">
+        <div class="input-field s12 m6 offset-m3 l4 offset-l4">
+            <i class="material-icons prefix">movie</i>
+            <select id="typeMedia" name="typeMedia" onchange="changeTypeMedia()">
+                <option value="" disabled selected>Tipo de Mídia</option>
+                <option value="movie">Filme</option>
+                <option value="tv">Série</option>
+                <option value="default">Arquivo</option>
+            </select>
         </div>
     </div>
-    <div id="main_container" class="container"></div>
+</div>
+<div id="main_container" class="container"></div>
 
-    <% if (result) { %>
+<% if (result) { %>
     <%- include(`cards/search/${type}`, { result }) %>
-    <% }; %>
+<% }; %>
 
-    <script src="/js/upload.js"></script>
-</body>
+<script src="/js/upload.js"></script>
 
-</html>
+<%- include('particles/footer') %>
