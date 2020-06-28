@@ -1,4 +1,4 @@
-# XobporD - Armazenamento de vídeos e fotosS
+# XobporD - Armazenamento de vídeos, fotos e áudios
 
 <!--- Exemplos de badges. Acesse https://shields.io para outras opções. Você pode querer incluir informações de dependencias, build, testes, licença, etc. --->
 
@@ -7,9 +7,9 @@
 ![GitHub contributors](https://img.shields.io/github/contributors/rafael-junio/progweb-template)
 ![APM](https://img.shields.io/apm/l/vim-mode)
 
-XobporD tem como objetivo permitir que os usuários, de forma simples, armazenem e visualizem seus arquivos de vídeo e também fotos.
+XobporD tem como objetivo permitir que os usuários, de forma simples, armazenem e visualizem seus arquivos de vídeo, fotos e também áudios.
 
-Aplicação para armazenamento local de vídeos e fotos em que você poderá acessa-lo de qualquer dispositivo que tenha conexão com a mesma rede.
+Aplicação para armazenamento local de vídeos, fotos e áudios em que você poderá acessa-lo de qualquer dispositivo que tenha conexão com a mesma rede.
 É possível a pré-visualização e o download dos arquivos em outros dispositivos, sejam eles móveis ou desktops.
 
 ## Pré-requisitos
@@ -39,7 +39,7 @@ docker-compose build
 docker-compose up -d
 ```
 
-usuario e password do usuario _admin_:
+Usuário _admin_, responsável pelo gerenciamento dos demais usuários:
 
 ```shell
 email: admin@admin.com
@@ -50,9 +50,22 @@ password: admin
 
 Para usar XobporD, siga os seguintes passos (exemplos):
 
-- Abra o navegador e digite o seguinte endereço: `http://localhost:3000`
-- Ao abrir a aplicação você poderá:
-  - Enviar arquivos de imagem ou vídeos, pré-visualiza-los no navegador e fazer download.
+- Abra o navegador e digite o seguinte endereço: http://localhost:3000
+- Realize login com o usuário _admin_
+- Ao logar na aplicação você poderá:
+  - Enviar arquivos de vídeo, imagem ou áudio (_upload_)
+  - Pré-visualiza-los no navegador
+  - Baixá-los no seu computador
+  - Remové-los
+- Ao enviar arquivos como filmes ou séries é possível fazer uso da [TMDB API](https://developers.themoviedb.org/3/getting-started/introduction) para sua correnta identificação e descrição
+
+![Upload e Pesquisa de um Filme](./screenshots/pesquisa-filme.png)
+
+- Após enviado é possível visualizar todas as informação da mídia
+
+![Home](./screenshots/home.png)
+
+![Card do Filme](./screenshots/card-filme.png)
 
 ## Contribuidores
 
