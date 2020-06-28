@@ -1,4 +1,4 @@
-# XobporD - Armazenamento de vídeos, fotos e áudios
+# XobporD - Armazenamento multimídia
 
 <!--- Exemplos de badges. Acesse https://shields.io para outras opções. Você pode querer incluir informações de dependencias, build, testes, licença, etc. --->
 
@@ -7,9 +7,9 @@
 ![GitHub contributors](https://img.shields.io/github/contributors/rafael-junio/progweb-template)
 ![APM](https://img.shields.io/apm/l/vim-mode)
 
-XobporD tem como objetivo permitir que os usuários, de forma simples, armazenem e visualizem seus arquivos de vídeo, fotos e também áudios.
+XobporD tem como objetivo permitir que os usuários, de forma simples, armazenem e visualizem seus arquivos de vídeo e também fotos.
 
-Aplicação para armazenamento local de vídeos, fotos e áudios em que você poderá acessa-lo de qualquer dispositivo que tenha conexão com a mesma rede.
+Aplicação para armazenamento local de vídeos, imagens e áudios em que você poderá acessa-lo de qualquer dispositivo que tenha conexão com a mesma rede.
 É possível a pré-visualização e o download dos arquivos em outros dispositivos, sejam eles móveis ou desktops.
 
 ## Pré-requisitos
@@ -39,13 +39,19 @@ docker-compose build
 docker-compose up -d
 ```
 
-Usuário _admin_, responsável pelo gerenciamento dos demais usuários:
+usuario e password do usuario _admin_:
 
 ```shell
 email: admin@admin.com
 password: admin
 ```
-
+## O XobporD
+- Na aplicação você poderá:
+  - Enviar arquivos de vídeo, imagem ou áudio (_upload_);
+  - Pré-visualiza-los no navegador;
+  - Baixá-los no seu computador;
+  - Remové-los;
+  
 ## Usando XobporD
 
 Para usar XobporD, siga os seguintes passos (exemplos):
@@ -60,14 +66,9 @@ Para usar XobporD, siga os seguintes passos (exemplos):
   2. Selecione o tipo dentre os disponíveis (Filme, Série ou arquivo);
   3. Para Filme e Série, procure pelo conteúdo correspondente, clique em SELECIONAR;
   4. Selecione o arquivo para ser armazenado e clique em UPLOAD;
+    ![Upload e Pesquisa de um Filme](./screenshots/pesquisa-filme.png)
 - Após o upload, seus arquivos estarão disponíveis para VISUALIZAÇÃO, DOWNLOAD E REMOÇÃO na tela inicial.
-
-![Upload e Pesquisa de um Filme](./screenshots/pesquisa-filme.png)
-
-- Após enviado é possível visualizar todas as informação da mídia
-
 ![Home](./screenshots/home.png)
-
 ![Card do Filme](./screenshots/card-filme.png)
 
 ## Contribuidores
