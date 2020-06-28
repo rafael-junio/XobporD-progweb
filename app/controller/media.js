@@ -34,7 +34,7 @@ exports.search = (req, resp) => {
   )
     .then((res) => res.json())
     .then((result) => {
-      resp.render('upload', { title: 'Search', result: result.results, type: typeMedia });
+      resp.render('upload', { result: result.results, type: typeMedia });
     })
     .catch((err) => console.err(err));
 };

@@ -31,6 +31,6 @@ exports.signIn = async (req, res, next) => {
 };
 
 exports.signOut = async (req, res) => {
-  res.clearCookie('access_token');
+  res.clearCookie('xobpord');
   res.redirect('/login');
 };
