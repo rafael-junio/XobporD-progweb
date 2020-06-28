@@ -7,8 +7,8 @@ const router = Router();
 router.get(
   '/download/:idFile',
   passport.authenticate('jwt', { session: false }),
-  (req, res) => {
-    mediaController.sendFileGz(res, req.params.idFile);
+  (req, res, next) => {
+    mediaController.sendFileGz(req, res, next);
   },
 );
 
@@ -23,24 +23,24 @@ router.get(
 router.get(
   '/stream/:idFile',
   passport.authenticate('jwt', { session: false }),
-  (req, res) => {
-    mediaController.sendFile(req, res);
+  (req, res, next) => {
+    mediaController.sendFile(req, res, next);
   },
 );
 
 router.get(
   '/delete/:idFile',
   passport.authenticate('jwt', { session: false }),
-  (req, res) => {
-    mediaController.deleteFile(req, res);
+  (req, res, next) => {
+    mediaController.deleteFile(req, res, next);
   },
 );
 
 router.post(
   '/upload/search',
   passport.authenticate('jwt', { session: false }),
-  (req, res) => {
-    mediaController.search(req, res);
+  (req, res, next) => {
+    mediaController.search(req, res, next);
   },
 );
 

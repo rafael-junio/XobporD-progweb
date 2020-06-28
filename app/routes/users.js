@@ -10,8 +10,8 @@ const router = Router();
 router.get(
   '/home',
   passport.authenticate('jwt', { session: false, failureRedirect: '/login' }),
-  (req, res) => {
-    uploadController.showAll().then((result) => res.render('home', { result }));
+  (req, res, next) => {
+    uploadController.showAll(req, res, next).then((result) => res.render('home', { result }));
   },
 );
 
@@ -54,13 +54,13 @@ router.post(
   '/upload',
   passport.authenticate('jwt', { session: false }),
   upload.single('file'),
-  async (req, res) => {
+  async (req, res, next) => {
     const payload = await jwt.verify(
       req.signedCookies.xobpord,
       process.env.JWT_SECRET,
       { ignoreExpiration: true },
     );
-    uploadController.register(req, res, payload);
+    uploadController.register(req, res, next, payload);
   },
 );
 
