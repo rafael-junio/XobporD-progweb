@@ -6,7 +6,7 @@ const path = require('path');
 const baseUrl = 'https://api.themoviedb.org/3/';
 const result = {};
 
-exports.register = (req, res, payload) => {
+exports.register = (req, res, next, payload) => {
   const message = [];
   const { file } = req;
 
@@ -17,7 +17,7 @@ exports.register = (req, res, payload) => {
   const mimetype = file.mimetype.substring(0, 5);
   console.log(mimetype);
   if (mimetype !== 'image' && mimetype !== 'video' && mimetype !== 'audio') {
-    message.push({ msg: 'Formato inválido, somente imagens e vídeos são aceitos!' });
+    message.push({ msg: 'Formato inválido, somente imagens, vídeos e aúdios são aceitos!' });
     return res.render('home', { message });
   }
 
@@ -32,18 +32,17 @@ exports.register = (req, res, payload) => {
     tag: req.body.typeMedia,
   };
 
-  console.log(fileData);
-
   models.Files.create(fileData)
     .then((data) => {
-      console.log(data);
       message.push({ msg: 'Upload feito com sucesso' });
       return res.render('upload', { message, result: undefined });
     })
-    .catch((err) => console.err(err));
+    .catch((err) => {
+      return next(err);
+    });
 };
 
-exports.showAll = async () => {
+exports.showAll = async (req, res, next) => {
   await models.Files.findAll({
     attributes: ['id', 'fileName', 'uploadName', 'type', 'size', 'idTMDB', 'tag', 'uploadedBy'],
   })
@@ -51,7 +50,10 @@ exports.showAll = async () => {
       result.total_size = files.length;
       result.files = files;
       result.TMDB = {};
-    });
+    })
+    .catch(err => {
+      return next(err);
+    })
 
   if (result.files.length === 0) { return null; }
 
@@ -64,7 +66,10 @@ exports.showAll = async () => {
        */
       result.TMDB[i] = await fetch(`${baseUrl}${result.files[i].tag}/${result.files[i].idTMDB}?api_key=${process.env.TMDB_API_KEY}&language=pt-BR`)
         .then((res) => res.json())
-        .then((data) => data);
+        .then((data) => data)
+        .catch(err => {
+          return next(err);
+        })
     }
   }
   return result;
