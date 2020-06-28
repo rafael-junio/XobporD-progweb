@@ -7,7 +7,7 @@
 
 <body>
   <br>
-  <% if (result) { %>
+  <% if (typeof result !== 'undefined' && result !== null) { %>
   <div id="container" class="container">
     <div class="row">
       <% for(let i = 0; i < result.files.length; i++) { %>

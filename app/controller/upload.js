@@ -1,6 +1,8 @@
 import fetch from 'node-fetch';
 import models from '../database/models';
 
+var path = require('path');
+
 const baseUrl = 'https://api.themoviedb.org/3/';
 const result = {};
 
@@ -12,27 +14,34 @@ exports.register = (req, res, payload) => {
     message.push({ msg: 'Campo do arquivo vazio!' });
     return res.render('home', { message });
   }
+  var mimetype = file.mimetype.substring(0, 5)
+  console.log(mimetype)
+  if (mimetype !== 'image' && mimetype !== 'video') {
+    message.push({ msg: 'Formato inválido, somente imagens e vídeos são aceitos!' });
+    return res.render('home', { message });
+  }
+  else {
+    console.log('file received');
+    const fileData = {
+      fileName: file.originalname,
+      uploadName: file.filename,
+      type: file.mimetype,
+      size: file.size,
+      uploadedBy: payload.sub,
+      idTMDB: req.body.idTMDB,
+      tag: req.body.typeMedia,
+    };
 
-  console.log('file received');
-  const fileData = {
-    fileName: file.originalname,
-    uploadName: file.filename,
-    type: file.mimetype,
-    size: file.size,
-    uploadedBy: payload.sub,
-    idTMDB: req.body.idTMDB,
-    tag: req.body.typeMedia,
-  };
+    console.log(fileData);
 
-  console.log(fileData);
-
-  models.Files.create(fileData)
-    .then((data) => {
-      console.log(data);
-      message.push({ msg: 'Upload feito com sucesso' });
-      return res.render('upload', { message, result: undefined });
-    })
-    .catch((err) => console.err(err));
+    models.Files.create(fileData)
+      .then((data) => {
+        console.log(data);
+        message.push({ msg: 'Upload feito com sucesso' });
+        return res.render('upload', { message, result: undefined });
+      })
+      .catch((err) => console.err(err));
+  }
 };
 
 exports.showAll = async () => {
