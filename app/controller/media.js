@@ -24,7 +24,7 @@ exports.sendFile = (req, res, next) => {
       const mime = file.type;
       const mimeShort = mime.match(pattRegex)[0].slice(0, -1);
       const path = `${process.env.PATH_DIR_UPLOAD}/${file.uploadName}`;
-      if (mimeShort === 'video') { return sendFileVideo(req, res, next, path); } if (mimeShort === 'image') { return res.sendFile(`/usr/app/${path}`); } if (mimeShort === 'audio') { return sendFileAudio(req, res, `/usr/app/${path}`); } return res.redirect('/users/home');
+      if (mimeShort === 'video') { return sendFileVideo(req, res, path); } if (mimeShort === 'image') { return res.sendFile(`/usr/app/${path}`); } if (mimeShort === 'audio') { return sendFileAudio(req, res, `/usr/app/${path}`); } return res.redirect('/users/home');
     })
     .catch(err => {
       return next(err);
