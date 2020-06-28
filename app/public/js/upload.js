@@ -212,6 +212,7 @@ function chooseMedia(media) {
   localStorage.clear();
   removeCardsElements();
   M.toast({ html: 'Filme selecionado', inDuration: 50, outDuration: 75 });
+  document.getElementById('btn_submit_card').disabled = false;
 };
 // --------------------------------------------
 
