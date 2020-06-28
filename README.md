@@ -51,8 +51,16 @@ password: admin
 Para usar XobporD, siga os seguintes passos (exemplos):
 
 - Abra o navegador e digite o seguinte endereço: `http://localhost:3000`
+- Faça um cadastro na aplicação clicando em Cadastre-se.
+- Após o cadastro, faça login usando o e-mail e a senha cadastrada.
 - Ao abrir a aplicação você poderá:
   - Enviar arquivos de imagem ou vídeos, pré-visualiza-los no navegador e fazer download.
+- Para fazer um upload:
+  1. Na página inicial você deve clicar na nuvem localizada no canto superior direito;
+  2. Selecione o tipo dentre os disponíveis (Filme, Série ou arquivo);
+  3. Para Filme e Série, procure pelo conteúdo correspondente, clique em SELECIONAR;
+  4. Selecione o arquivo para ser armazenado e clique em UPLOAD;
+- Após o upload, seus arquivos estarão disponíveis para VISUALIZAÇÃO, DOWNLOAD E REMOÇÃO na tela inicial.
 
 ## Contribuidores
 
@@ -60,7 +68,6 @@ As seguintes pessoas contribuiram para este projeto:
 
 - [Rafael Junio Xavier](https://github.com/rafael-junio)
 - [Diego Bulhões Moraes](https://github.com/DiegoBulhoes/)
-- [Jhonatan Froeder](https://github.com/froeder)
 - [Guilherme Ribeiro Carvalho](https://github.com/guilhermercarvalho)
 
 ## Licença de uso
