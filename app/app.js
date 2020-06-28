@@ -52,15 +52,15 @@ app.use('/media', mediaRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
-  // next(createError(404));
-  res.status(404).send('Unable to find the requested resource!');
+  createError(404)
+  res.render('404');
 });
 
 app.use((err, req, res) => {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
   res.status(err.status || 500);
-  res.render('error');
+  res.render('500', { message: err.message, error: err});
 });
 
 module.exports = app;

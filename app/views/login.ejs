@@ -1,66 +1,32 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-  <head>
-    <% include ./particles/head.ejs %>
-  </head>
-  <body>
-    <nav>
-      <div class="nav-wrapper">
-        <a href="/" class="brand-logo left">XobproD</a>
+<%- include('particles/baseLoggedOut') %>
+
+<section class="row z-depth-3 login">
+  <% include ./particles/message.ejs %>
+  <h4 class="center-align">Login</h4>
+  <form method="post" action="/login" method="POST" autocomplete="off" novalidate class="row">
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">person</i>
+        <input id="email" name="email" type="email" autocomplete="email" class="validate" />
+        <label for="email">Email</label>
       </div>
-    </nav>
+    </div>
 
-    <section class="row z-depth-3 login">
-      <% include ./particles/message.ejs %>
-      <h4 class="center-align">Login</h4>
-      <form
-        method="post"
-        action="/login"
-        method="POST"
-        autocomplete="off"
-        novalidate
-        class="row"
-      >
-        <div class="row">
-          <div class="input-field col s12">
-            <i class="material-icons prefix">person</i>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              autocomplete="email"
-              class="validate"
-            />
-            <label for="email">Email</label>
-          </div>
-        </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">lock</i>
+        <input id="password" name="password" autocomplete="password" type="password" class="validate" />
+        <label class="" for="password">Senha</label>
+      </div>
+    </div>
 
-        <div class="row">
-          <div class="input-field col s12">
-            <i class="material-icons prefix">lock</i>
-            <input
-              id="password"
-              name="password"
-              autocomplete="password"
-              type="password"
-              class="validate"
-            />
-            <label class="" for="password">Senha</label>
-          </div>
-        </div>
+    <div class="center-align">
+      <input class="waves-effect waves-light btn" type="submit" value="Login" />
+    </div>
+    <div class="center-align">
+      <p>Não tem conta? <a href="/register">Registre-se</a></p>
+    </div>
+  </form>
+</section>
 
-        <div class="center-align">
-          <input
-            class="waves-effect waves-light btn"
-            type="submit"
-            value="Login"
-          />
-        </div>
-        <div class="center-align">
-          <p>Não tem conta? <a href="/register">Registre-se</a></p>
-        </div>
-      </form>
-    </section>
-    <%- include ./particles/importScript.ejs%>
-  </body>
-</html>
+<%- include('particles/footer') %>

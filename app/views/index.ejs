@@ -1,29 +1,19 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-  <head>
-    <% include ./particles/head.ejs %>
-  </head>
-  <body>
-    <nav>
-      <div class="nav-wrapper">
-        <a href="/" class="brand-logo left">XobproD</a>
-      </div>
-    </nav>
-    <section id="center-box" class="row z-depth-3 index">
-      <div class="row index-color">
-        <h4 class="center-align">Bem vindo ao XobproD</h4>
-      </div>
-      <div class="row index-color">
-        <h5 class="center-align">Faça aqui o upload de suas fotos e vídeos!</h5>
-      </div>
-      <div class="center-align">
-        <a href="/login">
-          <button class="waves-effect waves-light btn" type="button">
-            Login
-          </button>
-        </a>
-      </div>
-    </section>
-    <%- include ./particles/importScript.ejs%>
-  </body>
-</html>
+<%- include('particles/baseLoggedOut') %>
+
+<section id="center-box" class="row z-depth-3 index">
+  <div class="row index-color">
+    <h4 class="center-align">Bem vindo ao XobproD</h4>
+  </div>
+  <div class="row index-color">
+    <h5 class="center-align">Faça aqui o upload de suas fotos e vídeos!</h5>
+  </div>
+  <div class="center-align">
+    <a href="/login">
+      <button class="waves-effect waves-light btn" type="button">
+        Login
+      </button>
+    </a>
+  </div>
+</section>
+
+<%- include('particles/footer') %>

@@ -9,7 +9,7 @@ const router = Router();
 
 router.get(
   '/home',
-  passport.authenticate('jwt', { session: false }),
+  passport.authenticate('jwt', { session: false, failureRedirect: '/login' }),
   (req, res) => {
     uploadController.showAll().then((result) => res.render('home', { result }));
   },

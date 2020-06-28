@@ -1,75 +1,46 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-  <head>
-    <% include ./particles/head.ejs %>
-  </head>
-  <body>
-    <nav>
-      <div class="nav-wrapper">
-        <a href="/" class="brand-logo left">XobproD</a>
+<%- include('particles/base') %>
+
+<section class="row z-depth-3 register">
+  <% include ./particles/message.ejs %>
+  <h4 class="center-align">Update</h4>
+  <form method="post" action="/register" class="row">
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">person</i>
+        <input id="email" name="email" type="email" class="validate"
+          value="<%= typeof formContent != 'undefined'  && formContent.email != 'undefined' ? formContent.email : '' %>" />
+        <label for="email">Email</label>
       </div>
-    </nav>
-    <section class="row z-depth-3 register">
-      <% include ./particles/message.ejs %>
-      <h4 class="center-align">Update</h4>
-      <form method="post" action="/register" class="row">
-        <div class="row">
-          <div class="input-field col s12">
-            <i class="material-icons prefix">person</i>
-            <input id="email" name="email" type="email" class="validate" value="<%= typeof formContent != 'undefined'  && formContent.email != 'undefined' ? formContent.email : '' %>"/>
-            <label for="email">Email</label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s12">
-            <i class="material-icons prefix">person</i>
-            <input
-              id="confirm_email"
-              name="confirm_email"
-              type="email"
-              class="validate"
-            />
-            <label for="email">Confirm email</label>
-          </div>
-        </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">person</i>
+        <input id="confirm_email" name="confirm_email" type="email" class="validate" />
+        <label for="email">Confirm email</label>
+      </div>
+    </div>
 
-        <div class="row">
-          <div class="input-field col s12">
-            <i class="material-icons prefix">lock</i>
-            <input
-              id="password"
-              name="password"
-              type="password"
-              autocomplete="password"
-              class="validate"
-            />
-            <label class="" for="password">password</label>
-          </div>
-        </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">lock</i>
+        <input id="password" name="password" type="password" autocomplete="password" class="validate" />
+        <label class="" for="password">password</label>
+      </div>
+    </div>
 
-        <div class="row">
-          <div class="input-field col s12">
-            <i class="material-icons prefix">lock</i>
-            <input
-              id="confirm_password"
-              name="confirm_password"
-              type="password"
-              autocomplete="confirm_password"
-              class="validate"
-            />
-            <label class="" for="confirm_password">Confirm password</label>
-          </div>
-        </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">lock</i>
+        <input id="confirm_password" name="confirm_password" type="password" autocomplete="confirm_password"
+          class="validate" />
+        <label class="" for="confirm_password">Confirm password</label>
+      </div>
+    </div>
 
-        <div class="center-align">
-          <input
-            class="waves-effect waves-light btn"
-            type="submit"
-            value="Update"
-          />
-        </div>
-      </form>
-    </section>
-    <%- include ./particles/importScript.ejs%>
-  </body>
-</html>
+    <div class="center-align">
+      <input class="waves-effect waves-light btn" type="submit" value="Update" />
+    </div>
+  </form>
+</section>
+
+<%- include('particles/footer') %>
